@@ -71,10 +71,10 @@ h2 {
 }
 
 @keyframes blinking{
-    0%{		color: #fff;	}
-	49%{	color: rgba(255, 255, 255, 0.301);	}
-	50%{	color: rgba(255, 255, 255, 0.301);	}
-	99%{	color: rgb(255, 255, 255);	}
+    0%  {		color: #fff;	}
+	49% {	color: rgba(255, 255, 255, 0.178);	}
+	50% {	color: rgba(255, 255, 255, 0.178);	}
+	99% {	color: rgb(255, 255, 255);	}
 	100%{	color: #fff;	}
 }
 
