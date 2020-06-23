@@ -1,3 +1,5 @@
+/* ------------------------General font/body content ----------------------*/
+
 @font-face {
     font-family: myFontBold;
     src: url("../font/BryantPro-Bold.woff") format("woff"), url("../font/BryantPro-bold.woff2") format("woff2");
@@ -28,7 +30,7 @@ h2 {
   
 } 
 
-/*--- Start Page ----*/
+/*--------------------------- Start Page  ---------------------------------*/
 
 .start-screen-bg{
  
@@ -65,15 +67,21 @@ h2 {
     border-radius: 15px;
     position: relative;
     top: 130px;
+    animation: blinking 1.2s infinite;
 }
 
+@keyframes blinking{
+    0%{		color: #fff;	}
+	49%{	color: rgba(255, 255, 255, 0.301);	}
+	50%{	color: rgba(255, 255, 255, 0.301);	}
+	99%{	color: rgb(255, 255, 255);	}
+	100%{	color: #fff;	}
+}
+
+/* ---------------Button stylings------------------ */
 .difficultyButtons {
     list-style: none;
     padding: 50px 0 0 0;
-}
-
-button{
- 
 }
 
 .levelButton {
