@@ -1,0 +1,22 @@
+@font-face {
+    font-family: myFontBold;
+    src: url("../font/BryantPro-Bold.woff") format("woff"), url("../font/BryantPro-bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: myFontRegular;
+    src: url("../font/BryantPro-Regular.woff") format("woff"), url("../font/BryantPro-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: myFontMedium;
+    src: url("../font/BryantPro-Medium.woff") format("woff"), url("../font/BryantPro-Medium.woff2") format("woff2");
+}
+
+
+h1 {
+    font-family: myFontBold, sans-serif;
+    color: black;
+     
+    
+  
+} 
