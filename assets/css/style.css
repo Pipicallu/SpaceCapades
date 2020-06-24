@@ -68,6 +68,7 @@ h2 {
     position: relative;
     top: 130px;
     animation: blinking 1.2s infinite;
+    
 }
 
 @keyframes blinking{
@@ -77,6 +78,7 @@ h2 {
 	99% {	color: rgb(255, 255, 255);	}
 	100%{	color: #fff;	}
 }
+
 
 /* ---------------Button stylings------------------ */
 .difficultyButtons {
@@ -89,10 +91,14 @@ h2 {
     height: 50px;
     margin: 8px;
     color: white;
+    position: relative;
+    bottom: -100px;
 }
+
 
 .levelButton:hover{
     color: white;
+    
 }
 
 .cadetButton{
