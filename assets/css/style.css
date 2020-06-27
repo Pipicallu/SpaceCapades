@@ -30,6 +30,15 @@ h2 {
   
 } 
 
+p {
+    margin: 0;
+    color: white;
+    position: relative;
+    bottom: -130px;
+    font-size: 20px;
+    background-color: #252960;
+    border-radius: 10px; 
+}
 /*--------------------------- Start Page  ---------------------------------*/
 
 .start-screen-bg{
@@ -91,8 +100,7 @@ h2 {
     height: 50px;
     margin: 8px;
     color: white;
-    position: relative;
-    bottom: -100px;
+    
 }
 
 
@@ -106,6 +114,8 @@ h2 {
     border-bottom: 4px solid #519251;
     border-right: 4px solid #519251;
     box-shadow: 0.2px 2px 10px 2px #22222499;
+    position: relative;
+    bottom: -100px;
 }
 
 .pilotButton{
@@ -114,6 +124,8 @@ h2 {
     border-bottom: 4px solid #521fb2;
     border-right: 4px solid #521fb2;
     box-shadow: 0.2px 2px 10px 2px #252960;
+    position: relative;
+    bottom: -100px;
 }
 
 .commanderButton{
@@ -122,4 +134,6 @@ h2 {
     border-bottom: 4px solid #854040;
     border-right: 4px solid #854040;
     box-shadow: 0.2px 2px 10px 2px #252960;
+    position: relative;
+    bottom: -100px;
 }
