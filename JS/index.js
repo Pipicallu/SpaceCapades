@@ -10,3 +10,6 @@ $(document).ready(function(){
      $(".commanderButton").animate({bottom: '0px'}, 1000);
 });
 
+
+/*-- cardback animation --*/ 
+
