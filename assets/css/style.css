@@ -166,6 +166,10 @@ p {
     top: 20px;
 }
 
+.game-container{
+    perspective: 500px;
+}
+
 .game-card{
     position: relative;
     height: 175px;
@@ -178,11 +182,20 @@ p {
 
 }
 
+.game-card:hover .card-back{
+    transform: rotateY(-180deg);
+}
+
+.game-card:hover .card-front{
+    transform: rotateY(0);
+}
+
 .card-spacing{
     padding: 10px;
     position: relative;
     top: 20px;
 }
+/*------ card design ----*/
 
 .card-face{
     position: absolute;
@@ -192,10 +205,27 @@ p {
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
+    transition: transform 500ms ease-in-out;
 }
 
+
+
 .card-front{
-    transform: rotateX(180deg);
+    transform: rotateY(180deg);
+    background: radial-gradient(#813402, #000000);
+    border: 2px solid #4a1e01;
+    border-radius: 5px;
+}
+
+.frontIMG{
+    width: 100px;
+    height: 100px;
+    transform: scale(1);
+    transition: transform .2s ease-in-out;
+}
+
+.card-front:hover .frontIMG{
+    transform: scale(1.4);
 }
 
 .card-back{
@@ -205,7 +235,7 @@ p {
 
 
  .card-back-title{
-     position: relative;
+    position: relative;
     margin: auto;
     right: 49px; 
     font-size: 14px;
@@ -227,7 +257,7 @@ p {
     
 }
 
-.card-back:hover .rocket{
+.card-face:hover .rocket{
     height: 40px;
     width: 40px;
 }
@@ -259,7 +289,7 @@ p {
     
 }
 
-.galaxy{
+.saturn{
     width: 100px;
     height: 100px;  
     position: relative;
@@ -269,7 +299,13 @@ p {
 
 }
 
-.card-back:hover .galaxy{
+.frontIMG{
+    width: 100px;
+    height: 100px;
+
+}
+
+.card-back:hover .saturn{
 
     transform: rotate(90deg);
     
