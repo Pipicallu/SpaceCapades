@@ -168,13 +168,11 @@ p {
 
 .game-card{
     position: relative;
-    background-color: #3a4198;
     height: 175px;
     width: 125px;
     margin: auto;
     border-radius: 5px;
-    border-right: 4px solid #0000004a;
-    border-bottom: 4px solid #00000073;
+    border: 1px solid #252960;
     box-shadow: 2.2px 2px 11px 2px #101129;
 
 
@@ -192,42 +190,87 @@ p {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    backface-visibility: hidden;
 }
 
-.rocketship{
-    width: 200px;
-    height: 200px;
-    transform: rotate(-45deg);
-    
-
-
+.card-front{
+    transform: rotateX(180deg);
 }
 
-.sputnik{
+.card-back{
+    background: radial-gradient(#4b53c6, #090a19);
+    border-radius: 5px;
+}
+
+
+ .card-back-title{
+     position: relative;
+    margin: auto;
+    right: 49px; 
+    font-size: 14px;
+    color: white;
+    background-color: #2c306bfc;
+    border-radius: 20px;
+    transition: font-size 200ms ease-in-out;
+} 
+
+.card-back:hover .card-back-title{
+    font-size: 15px;
+}
+
+.rocket{
     position: absolute;
-    width: 47px;
-    height: 47px;
+    width: 30px;
+    height: 30px;
+    transition: height 100ms ease-in-out, width 100ms ease-in-out;
+    
 }
 
-.sputnik-top-left{
-    transform: rotate(180deg);
+.card-back:hover .rocket{
+    height: 40px;
+    width: 40px;
+}
+
+.rocket-top-left{
+    transform: rotate(90deg);
     top:0;
     left:0;
+    
 }
 
-.sputnik-top-right{
-    transform: rotate(270deg);
+.rocket-top-right{
+    transform: rotate(180deg);
     top:0;
     right:0;
+    
 }
 
-.sputnik-bottom-left{
-    transform: rotate(90deg);
+.rocket-bottom-left{
+   
     bottom: 0;
     left: 0;
+    
 }
-.sputnik-bottom-right{
+.rocket-bottom-right{
     bottom:0;
     right: 0;
+    transform: rotate(-90deg);
+    
+}
+
+.galaxy{
+    width: 100px;
+    height: 100px;  
+    position: relative;
+    left: 54px;
+    transition: transform .2s ease-in-out;
+
+
+}
+
+.card-back:hover .galaxy{
+
+    transform: rotate(90deg);
+    
 }
