@@ -27,7 +27,14 @@
   </head>
 
   <body>
-  
+    <div class="status-overlay">Click to Start!</div>
+    <div id="fail" class="status-overlay ">Failure to Launch.
+        <span class="overlay-text-small  ">Click here to try again!</span>
+    </div>
+    <div id="win" class="status-overlay visible ">Houston, We Have Lift Off!
+        <span class="overlay-text-small  ">Click here to beat your score!</span>
+    </div>
+    
     <div class="container-fluid game-container game-background">
     <div class="opaque-overlay">&nbsp;</div>
       <!---- game information row-->
@@ -39,13 +46,14 @@
           <div class="text-center game-info">
             Flips: <span id="flips-made">0</span>
           </div>
+          
         </div>
       </div>
       <!--------Card Section-->
       <div class="d-flex justify-content-center">
         <div class="row">
           <div class="card-spacing col-6 col-md-3">
-            <div class="game-card visible">
+            <div class="game-card ">
                 <div class="card-back card-face">
                      <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
                      <span class="card-back-title">SPACECAPADES</span>
