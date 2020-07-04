@@ -178,6 +178,159 @@ p {
 
     
 }
+
+
+.rocketFail{
+    width: 100px;
+    height: 100px;
+    transform: rotate(-45deg);
+    top: 100px;
+    left: 0px;
+    right: 0px;
+    position: relative;
+    animation: crash 2s ;
+    animation-iteration-count: infinite;
+   
+}
+
+@keyframes crash{
+   
+    0%{
+        transform: rotate(-48deg);
+        top: 95px;
+        right: 2px;
+    }
+    5%{
+        transform: rotate(-42deg);
+        top:90px;
+        left: -2px;
+
+    }
+    10%{
+        transform: rotate(-48deg);
+        top: 85px;
+        right: 2px;
+    }
+    15%{
+        transform: rotate(-42deg);
+        top:80px;
+        left: -2px;
+
+    }
+     20%{
+        transform: rotate(-48deg);
+        top: 75px;
+        right: 2px;
+    }
+    25%{
+        transform: rotate(-42deg);
+        top:70px;
+        left: -2px;
+
+    }
+    30%{
+        transform: rotate(-48deg);
+        top: 65px;
+        right: 2px;
+    }
+    35%{
+        transform: rotate(-42deg);
+        top: 60px;
+        left: -2px;
+
+    }
+    40%{
+        transform: rotate(-48deg);
+        top: 55px;
+        right: 2px;
+    }
+    45%{
+        transform: rotate(-42deg);
+        top: 50px;
+        left: -2px;
+
+    }
+    50%{
+        transform: rotate(-48deg);
+        top: 45px;
+        right: 2px;
+    }
+    55%{
+        transform: rotate(-42deg);
+        top: 40px;
+        left: -2px;
+
+    }
+    60%{
+        transform: rotate(-30deg);
+        top: 40px;
+
+    }
+    
+    100%{
+        transform: rotate(45deg);
+        top: 100px;
+
+    }
+    
+
+}
+
+.rocketWin1{
+    width: 100px;
+    height: 100px;
+    transform: rotate(-45deg);
+    top: 100px;
+    position: relative;
+    animation: blast 2.2s;
+    animation-iteration-count: infinite;
+    animation-delay: 700ms;
+}
+@keyframes blast {
+    from {
+        top: 100px;
+    }
+    to {
+        top: -500px;
+    }
+}
+
+
+.rocketWin2{
+    width: 100px;
+    height: 100px;
+    transform: rotate(-45deg);
+    top: 100px;
+    left: 400px;
+    position: relative;
+    animation: blast 2.2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1000ms;
+}
+
+.rocketWin3{
+    width: 100px;
+    height: 100px;
+    transform: rotate(-45deg);
+    right: 400px;
+    position: relative;
+    animation: blastEdit 2.2s;
+    animation-iteration-count: infinite;
+    animation-delay: 200ms;
+}
+
+@keyframes blastEdit {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -600px;
+    }
+}
+
+
+
+
 .game-background{
 
     height: 140vh;
