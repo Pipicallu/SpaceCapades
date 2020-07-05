@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" async></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" async></script>
+    <script type="text/javascript" src="../JS/script.js" async ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
@@ -22,17 +26,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    
 
     <title>SpaceCapades</title>
   </head>
 
   <body>
-    <div class="status-overlay">Click to Start!</div>
+    <div class="status-overlay visible">Click to Start!</div>
     <div id="fail" class="status-overlay">Failure to Launch.
         <span class="overlay-text-small  ">Click here to try again!</span>
         <img class="rocketFail" src="assets/images/rocketWhite.png" alt="rocket">
     </div>
-    <div id="win" class="status-overlay visible ">Houston, We Have Lift Off!
+    <div id="win" class="status-overlay">Houston, We Have Lift Off!
         <span class="overlay-text-small  ">Click here to beat your score!</span>
         <img class="rocketWin1" src="assets/images/rocketWhite.png " alt="rocket">
         <img class="rocketWin2" src="assets/images/rocketWhite.png" alt="rocket">
@@ -393,9 +398,5 @@
     </div>
 
     <!--To Do: research  async defer for tags-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../JS/index.js"></script>
   </body>
 </html>
