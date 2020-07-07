@@ -134,7 +134,7 @@ p {
 }
 
 /*------- Game page ----------*/ 
-
+/*---overlays---*/
 .status-overlay{
     display: none;
     position: fixed;
@@ -330,10 +330,10 @@ p {
 
 
 
-
-.game-background{
-
-    height: 140vh;
+/*----Game Elements------*/
+body{
+    margin: 0;
+    min-height: 100vh;
   
 
   background: url(../images/startScreen.jpg) no-repeat center center fixed; 
@@ -341,31 +341,37 @@ p {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
-
-  
-
 }
+
+.game-info-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+}
+.game-container{
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  justify-content: center;
+  perspective: 500px;
+}
+
 
 .game-info{
     color: white;
     font-size: 2.2em;
     background-color: #252960;
     border-radius: 40px;
-    margin: 0 20px 0 20px;
-    position: relative;
-    top: 20px;
+    
+    
 }
 
-.game-container{
-    perspective: 500px;
-}
 
 .game-card{
     position: relative;
     height: 175px;
     width: 125px;
-    margin: auto;
     border-radius: 5px;
     border: 1px solid #252960;
     box-shadow: 2.2px 2px 11px 2px #101129;
@@ -373,21 +379,15 @@ p {
 
 }
 
-.game-card:hover .card-back{
+.game-card.visible .card-back{
     transform: rotateY(-180deg);
 }
 
-.game-card:hover .card-front{
+.game-card.visible .card-front{
     transform: rotateY(0);
 }
 
 
-
-.card-spacing{
-    padding: 10px;
-    position: relative;
-    top: 20px;
-}
 /*------ card design ----*/
 
 .card-face{
