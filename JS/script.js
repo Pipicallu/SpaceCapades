@@ -3,7 +3,7 @@ class gameLevel {
     this.cardsArray = cards;
     this.totalTime = totalTime;
     this.timeRemaining = totalTime;
-    this.timer = document.getElementById("timer-countdown");
+    this.timer = document.getElementById("timer-countDown");
     this.ticker = document.getElementById("flips-made");
     //this.audioController = new AudioController();
   }
@@ -14,7 +14,26 @@ class gameLevel {
     this.matchedCards = []; // all matched cards that we get will go here and we will also use this to check if we have a victory
     this.busy = true;
 
-    this.shuffleCards();
+    setTimeout(() =>{
+        //this.audioController.startmusic
+        this.shuffleCards();
+        this.countDown = this.startCountDown();
+        this.busy = false;
+    }, 500);
+
+    this.hideCards();
+    this.timeRemaining.innerText = this.timeRemaining;
+    this.ticker.innerText = this.ticker;
+
+  }
+  
+  hideCards(){
+      this.cardsArray.forEach(card =>{
+          card.classList.remove("visible");
+          card.classList.remove("matched");
+
+        });
+
   }
 
   flipCard(card){
@@ -23,8 +42,66 @@ class gameLevel {
         this.totalClicks++;
         this.ticker.innerText = this.totalClicks;
         card.classList.add("visible");
+
+        if(this.cardToCheck)
+            this.checkForCardMatch();
+        else
+        this.cardToCheck = card;
     }
   }
+
+  checkForCardMatch(card){
+        if(this.getCardType(card) === this.getCardType(this.cardToCheck))
+            this.cardMatch(card, this.cardToCheck);
+        else
+            this.cardMismatch(card, this.cardToCheck);
+
+        this.cardToCheck= null;
+  }
+
+  cardMatch(card1, card2){
+    this.matchedCards.push(card1);
+    this.matchedCards.push(card2);
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+    //this.audioController.match();
+    if(this.matchedCards.length == this.cardsArray)
+        this.victory();
+  }
+
+  cardMismatch(card){
+      this.busy = true;
+      setTimeout(() =>{
+            card1.classList.remove("matched");
+            card2.classList.remove("matched");
+            this.busy = false;
+      },1000);
+  }
+getCardType(card){
+    return document.getElementsByClassName("frontIMG").src; 
+}
+  startCountDown(){
+    return setInterval(() =>{
+        this.timeRemaining--;
+        this.timer.innerText = this.timeRemaining;
+            if(this.timeRemaining == 0)
+                this.gameOver();
+    }, 1000);
+
+}
+
+  gameOver(){
+      clearInterval(this.countDown);
+      //this.audiocontroller.gameover();
+      document.getElementById("fail").classList.add("visible");
+  }
+
+  victory(){
+      clearInterval(this.countDown);
+      //this.audiocontroller.victory();
+      document.getElementById("win").classList.add("visible");
+  }
+
 
   shuffleCards(){ /* using the fisher/Yates shuffling algorithm
                             1) this algorithm takes an array and works through it backwards from [-1] to [0]
