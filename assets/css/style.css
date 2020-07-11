@@ -368,26 +368,29 @@ body{
 }
 
 
-.game-card{
+.card{
     position: relative;
     height: 175px;
     width: 125px;
     border-radius: 5px;
     border: 1px solid #252960;
     box-shadow: 2.2px 2px 11px 2px #101129;
+    background-color: unset;
 
 
 }
 
-.game-card.visible .card-back{
+.card.visible .card-back{
     transform: rotateY(-180deg);
+   
 }
 
-.game-card.visible .card-front{
+.card.visible .card-front{
     transform: rotateY(0);
+    
 }
 
-.game-card.matched .frontIMG{
+.card.matched .frontIMG{
     animation: dance 1s linear infinite 500ms; 
 }
 

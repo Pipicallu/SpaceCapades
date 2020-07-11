@@ -22,7 +22,7 @@ class gameLevel {
     }, 500);
 
     this.hideCards();
-    this.timeRemaining.innerText = this.timeRemaining;
+    this.timer.innerText = this.timeRemaining;
     this.ticker.innerText = this.ticker;
 
   }
@@ -54,7 +54,7 @@ class gameLevel {
         if(this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
         else
-            this.cardMismatch(card, this.cardToCheck);
+            this.cardMisMatch(card, this.cardToCheck);
 
         this.cardToCheck= null;
   }
@@ -65,20 +65,20 @@ class gameLevel {
     card1.classList.add("matched");
     card2.classList.add("matched");
     //this.audioController.match();
-    if(this.matchedCards.length == this.cardsArray)
+    if(this.matchedCards.length === this.cardsArray)
         this.victory();
   }
 
-  cardMismatch(card){
+  cardMisMatch(card){
       this.busy = true;
-      setTimeout(() =>{
-            card1.classList.remove("matched");
-            card2.classList.remove("matched");
+      setTimeout(() => {
+            card1.classList.remove("visible");
+            card2.classList.remove("visible");
             this.busy = false;
       },1000);
   }
 getCardType(card){
-    return document.getElementsByClassName("frontIMG").src; 
+    return card.getElementsByClassName("frontIMG")[0].src; 
 }
   startCountDown(){
     return setInterval(() =>{
@@ -117,8 +117,8 @@ getCardType(card){
 
 
   canFlipCard(){
-      return true; //for now will return true to check if I can flip the card.
-      //return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+      //return true; //for now will return true to check if I can flip the card.
+      return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
   }
 
 }
@@ -126,7 +126,7 @@ getCardType(card){
 
 function ready() {
   let overlays = Array.from(document.getElementsByClassName("status-overlay"));
-  let cards = Array.from(document.getElementsByClassName("game-card"));
+  let cards = Array.from(document.getElementsByClassName("card"));
   let game = new gameLevel(100,cards);
 
   overlays.forEach((overlay) => {
