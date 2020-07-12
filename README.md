@@ -7,3 +7,14 @@
 <span style="color:lightblue;">User goal:</span>  This site's users are expected to be young children between the ages of  5-10 who will use the site recreationally to learn about our planet, the solar sytem and the universe beyond. It is meant purely for the engagement and learning of the user.
 
 <span style="color:lightblue;">Site Owner's goal:</span> is to create a visually appealing & creative experience that will engage with and garner the attention of a younger audience all the while educating and increasing their knowledge of topics such astrology and physics. The site owner wishes to attract parents to the platform to be used as a preferred tool for learning.
+
+
+# To Do
+
+* Create level switcher class to create changes in difficulty between cadet pilot and commander options
+* add sounds to level
+* connect with google firebase to create a database of high scores 
+* add fact when cards are matched
+* style FrontIMGs on cards so as to be colored in 
+* customise dance animation 
+
