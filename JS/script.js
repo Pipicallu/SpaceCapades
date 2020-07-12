@@ -23,7 +23,7 @@ class gameLevel {
 
     this.hideCards();
     this.timer.innerText = this.timeRemaining;
-    this.ticker.innerText = this.ticker;
+    this.ticker.innerText = this.totalClicks;
 
   }
   
@@ -44,7 +44,7 @@ class gameLevel {
         card.classList.add("visible");
 
         if(this.cardToCheck)
-            this.checkForCardMatch();
+            this.checkForCardMatch(card);
         else
         this.cardToCheck = card;
     }
@@ -69,7 +69,7 @@ class gameLevel {
         this.victory();
   }
 
-  cardMisMatch(card){
+  cardMisMatch(card1, card2){
       this.busy = true;
       setTimeout(() => {
             card1.classList.remove("visible");
@@ -80,11 +80,11 @@ class gameLevel {
 getCardType(card){
     return card.getElementsByClassName("frontIMG")[0].src; 
 }
-  startCountDown(){
+  startCountDown() {
     return setInterval(() =>{
         this.timeRemaining--;
         this.timer.innerText = this.timeRemaining;
-            if(this.timeRemaining == 0)
+            if(this.timeRemaining === 0)
                 this.gameOver();
     }, 1000);
 
@@ -116,8 +116,8 @@ getCardType(card){
   }
 
 
-  canFlipCard(){
-      //return true; //for now will return true to check if I can flip the card.
+  canFlipCard(card){
+     //return true; //for now will return true to check if I can flip the card.
       return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
   }
 
