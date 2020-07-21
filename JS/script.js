@@ -7,7 +7,7 @@ class gameLevel {
     this.ticker = document.getElementById("flips-made");
     //this.audioController = new AudioController();
   }
-  startGame() { //this function gets called everytime the game is started
+startGame() { //this function gets called everytime the game is started
     this.cardToCheck = null; // this property checks to see if the card is already flipped
     this.totalClicks = 0; //will reset the clicks to 0 at the start of game
     this.timeRemaining = this.totalTime; //We want the time to reset when the game starts
@@ -69,8 +69,8 @@ class gameLevel {
     if(this.matchedCards.length === this.cardsArray.length)
         this.victory();
 
-   // if(this.matchedCards.push(card1) && this.matchedCards(card2))
-        return randomFacts()
+    
+    getRandomFact();
     
   }
 
@@ -126,11 +126,11 @@ getCardType(card){
       return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
   }
 
-  /*randomFacts(){
+ getRandomFact(){
       let spaceFacts = ["Mars Fact","Rover Fact","Astronaut Fact","Moon Fact","Galaxy Fact","Sun Fact","Nasa Fact","Star Fact"]; 
-      let randomFact = spaceFacts[Math.floor(Math.random()*spaceFacts.length)]
-      return document.getElementById(spaceText).innerHTML = randomFact;
-  }*/
+      const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
+      return document.getElementById("spaceText").innerHTML = randomFact;
+  }
 
 
 }
