@@ -12,6 +12,7 @@ class gameLevel {
     this.totalClicks = 0; //will reset the clicks to 0 at the start of game
     this.timeRemaining = this.totalTime; //We want the time to reset when the game starts
     this.matchedCards = []; // all matched cards that we get will go here and we will also use this to check if we have a victory
+    this.randomFact = null;
     this.busy = true;
 
     setTimeout(() =>{
@@ -67,6 +68,10 @@ class gameLevel {
     //this.audioController.match();
     if(this.matchedCards.length === this.cardsArray.length)
         this.victory();
+
+   // if(this.matchedCards.push(card1) && this.matchedCards(card2))
+        return randomFacts()
+    
   }
 
   cardMisMatch(card1, card2){
@@ -120,6 +125,13 @@ getCardType(card){
      //return true; //for now will return true to check if I can flip the card.
       return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
   }
+
+  /*randomFacts(){
+      let spaceFacts = ["Mars Fact","Rover Fact","Astronaut Fact","Moon Fact","Galaxy Fact","Sun Fact","Nasa Fact","Star Fact"]; 
+      let randomFact = spaceFacts[Math.floor(Math.random()*spaceFacts.length)]
+      return document.getElementById(spaceText).innerHTML = randomFact;
+  }*/
+
 
 }
 
