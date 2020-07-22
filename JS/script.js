@@ -70,7 +70,8 @@ startGame() { //this function gets called everytime the game is started
         this.victory();
 
     
-    getRandomFact();
+    if(this.matchedCards.push(card1) && this.matchedCards.push(card2))
+        this.getRandomFact();
     
   }
 
