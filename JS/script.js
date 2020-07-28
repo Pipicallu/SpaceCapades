@@ -1,3 +1,46 @@
+class AudioController {
+    constructor() { 
+        this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
+        this.flipMusic = new Audio("assets/soundFX/flipCardSound.wav");
+        this.cardMatchMusic = new Audio("assets/soundFX/cardMatchSound.wav");
+        this.victoryMusic = new Audio("assets/soundFX/victorySound.wav");
+        this.gameOverMusic = new Audio("assets/soundFX/gameOverSound.wav");
+        this.mainMusic.loop = true;
+        this.mainMusic.volume = 0.2;
+        this.flipMusic.volume = 0.5;
+   }
+   
+    startMusic(){
+     this.mainMusic.play();
+   }
+
+    stopMusic(){
+     this.mainMusic.pause();
+     this.mainMusic.currentTime = 0;
+     
+   }
+
+    flip(){
+      this.flipMusic.play();
+    }
+
+    match(){
+     this.cardMatchMusic.play();
+    }
+
+    victory(){
+     this.stopMusic();
+     this.victoryMusic.play();
+ }
+
+   gameOver(){
+    this.stopMusic();
+    this.gameOverMusic.play();
+}
+
+ 
+}
+
 class gameLevel {
   constructor(totalTime, cards) {
     this.cardsArray = cards;
@@ -5,7 +48,7 @@ class gameLevel {
     this.timeRemaining = totalTime;
     this.timer = document.getElementById("timer-countDown");
     this.ticker = document.getElementById("flips-made");
-    //this.audioController = new AudioController();
+    this.audioController = new AudioController();
   }
 startGame() { //this function gets called everytime the game is started
     this.cardToCheck = null; // this property checks to see if the card is already flipped
@@ -16,7 +59,7 @@ startGame() { //this function gets called everytime the game is started
     this.busy = true;
 
     setTimeout(() =>{
-        //this.audioController.startmusic
+        this.audioController.startMusic();
         this.shuffleCards();
         this.countDown = this.startCountDown();
         this.busy = false;
@@ -39,7 +82,7 @@ startGame() { //this function gets called everytime the game is started
 
   flipCard(card){
     if(this.canFlipCard(card)){
-        //this.audioController.flip(); ----- add the sounds please.
+        this.audioController.flip(); 
         this.totalClicks++;
         this.ticker.innerText = this.totalClicks;
         card.classList.add("visible");
@@ -65,7 +108,7 @@ startGame() { //this function gets called everytime the game is started
     this.matchedCards.push(card2);
     card1.classList.add("matched");
     card2.classList.add("matched");
-    //this.audioController.match();
+    this.audioController.match();
     if(this.matchedCards.length === this.cardsArray.length)
         this.victory();
 
@@ -98,13 +141,13 @@ getCardType(card){
 
   gameOver(){
       clearInterval(this.countDown);
-      //this.audiocontroller.gameover();
+      this.audioController.gameOver();
       document.getElementById("fail").classList.add("visible");
   }
 
   victory(){
       clearInterval(this.countDown);
-      //this.audiocontroller.victory();
+      this.audioController.victory();
       document.getElementById("win").classList.add("visible");
   }
 
