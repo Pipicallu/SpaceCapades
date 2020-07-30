@@ -1,5 +1,5 @@
 class AudioController {
-    constructor() { 
+    constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
         this.flipMusic = new Audio("assets/soundFX/flipCardSound.wav");
         this.cardMatchMusic = new Audio("assets/soundFX/cardMatchSound.wav");
@@ -8,201 +8,204 @@ class AudioController {
         this.mainMusic.loop = true;
         this.mainMusic.volume = 0.2;
         this.flipMusic.volume = 0.5;
-   }
-   
-    startMusic(){
-     this.mainMusic.play();
-   }
-
-    stopMusic(){
-     this.mainMusic.pause();
-     this.mainMusic.currentTime = 0;
-     
-   }
-
-    flip(){
-      this.flipMusic.play();
     }
 
-    match(){
-     this.cardMatchMusic.play();
+    startMusic() {
+        this.mainMusic.play();
     }
 
-    victory(){
-     this.stopMusic();
-     this.victoryMusic.play();
- }
+    stopMusic() {
+        this.mainMusic.pause();
+        this.mainMusic.currentTime = 0;
 
-   gameOver(){
-    this.stopMusic();
-    this.gameOverMusic.play();
-}
+    }
 
- 
+    flip() {
+        this.flipMusic.play();
+    }
+
+    match() {
+        this.cardMatchMusic.play();
+    }
+
+    victory() {
+        this.stopMusic();
+        this.victoryMusic.play();
+    }
+
+    gameOver() {
+        this.stopMusic();
+        this.gameOverMusic.play();
+    }
+
+
 }
 
 class gameLevel {
-  constructor(totalTime, cards) {
-    this.cardsArray = cards;
-    this.totalTime = totalTime;
-    this.timeRemaining = totalTime;
-    this.timer = document.getElementById("timer-countDown");
-    this.ticker = document.getElementById("flips-made");
-    this.audioController = new AudioController();
-  }
-startGame() { //this function gets called everytime the game is started
-    this.cardToCheck = null; // this property checks to see if the card is already flipped
-    this.totalClicks = 0; //will reset the clicks to 0 at the start of game
-    this.timeRemaining = this.totalTime; //We want the time to reset when the game starts
-    this.matchedCards = []; // all matched cards that we get will go here and we will also use this to check if we have a victory
-    this.randomFact = null;
-    this.busy = true;
+    constructor(totalTime, cards) {
+        this.cardsArray = cards;
+        this.totalTime = totalTime;
+        this.timeRemaining = totalTime;
+        this.facts = document.getElementById("spaceText");
+        this.timer = document.getElementById("timer-countDown");
+        this.ticker = document.getElementById("flips-made");
+        this.audioController = new AudioController();
+    }
+    startGame() { //this function gets called everytime the game is started
+        this.cardToCheck = null; // this property checks to see if the card is already flipped
+        this.totalClicks = 0; //will reset the clicks to 0 at the start of game
+        this.timeRemaining = this.totalTime; //We want the time to reset when the game starts
+        this.matchedCards = []; // all matched cards that we get will go here and we will also use this to check if we have a victory
+        this.randomFact = null;
+        this.facts.innerHTML = "";
+        this.busy = true;
+        
 
-    setTimeout(() =>{
-        this.audioController.startMusic();
-        this.shuffleCards();
-        this.countDown = this.startCountDown();
-        this.busy = false;
-    }, 500);
+        setTimeout(() => {
+            this.audioController.startMusic();
+            this.shuffleCards();
+            this.countDown = this.startCountDown();
+            this.busy = false;
+        }, 500);
 
-    this.hideCards();
-    this.timer.innerText = this.timeRemaining;
-    this.ticker.innerText = this.totalClicks;
+        this.hideCards();
+        this.timer.innerText = this.timeRemaining;
+        this.ticker.innerText = this.totalClicks;
 
-  }
-  
-  hideCards(){
-      this.cardsArray.forEach(card =>{
-          card.classList.remove("visible");
-          card.classList.remove("matched");
+    }
+
+    hideCards() {
+        this.cardsArray.forEach(card => {
+            card.classList.remove("visible");
+            card.classList.remove("matched");
 
         });
 
-  }
-
-  flipCard(card){
-    if(this.canFlipCard(card)){
-        this.audioController.flip(); 
-        this.totalClicks++;
-        this.ticker.innerText = this.totalClicks;
-        card.classList.add("visible");
-
-        if(this.cardToCheck)
-            this.checkForCardMatch(card);
-        else
-        this.cardToCheck = card;
     }
-  }
 
-  checkForCardMatch(card){
-        if(this.getCardType(card) === this.getCardType(this.cardToCheck))
+    flipCard(card) {
+        if (this.canFlipCard(card)) {
+            this.audioController.flip();
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
+            card.classList.add("visible");
+
+            if (this.cardToCheck)
+                this.checkForCardMatch(card);
+            else
+                this.cardToCheck = card;
+        }
+    }
+
+    checkForCardMatch(card) {
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
         else
             this.cardMisMatch(card, this.cardToCheck);
 
-        this.cardToCheck= null;
-  }
+        this.cardToCheck = null;
+    }
 
-  cardMatch(card1, card2){
-    this.matchedCards.push(card1);
-    this.matchedCards.push(card2);
-    card1.classList.add("matched");
-    card2.classList.add("matched");
-    this.audioController.match();
-    if(this.matchedCards.length === this.cardsArray.length)
-        this.victory();
-
-    
-    if(this.matchedCards.push(card1) && this.matchedCards.push(card2))
+    cardMatch(card1, card2) {
+        this.matchedCards.push(card1); 
+        this.matchedCards.push(card2);
+        card1.classList.add("matched");
+        card2.classList.add("matched");
+        this.audioController.match();
         this.getRandomFact();
     
-  }
 
-  cardMisMatch(card1, card2){
-      this.busy = true;
-      setTimeout(() => {
+        if (this.matchedCards.length === this.cardsArray.length) {
+            this.victory();
+        }
+        
+    }
+
+    cardMisMatch(card1, card2) {
+        this.busy = true;
+        setTimeout(() => {
             card1.classList.remove("visible");
             card2.classList.remove("visible");
             this.busy = false;
-      },1000);
-  }
-getCardType(card){
-    return card.getElementsByClassName("frontIMG")[0].src; 
-}
-  startCountDown() {
-    return setInterval(() =>{
-        this.timeRemaining--;
-        this.timer.innerText = this.timeRemaining;
-            if(this.timeRemaining === 0)
+        }, 1000);
+    }
+    getCardType(card) {
+        return card.getElementsByClassName("frontIMG")[0].src;
+    }
+    startCountDown() {
+        return setInterval(() => {
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if (this.timeRemaining === 0)
                 this.gameOver();
-    }, 1000);
+        }, 1000);
 
-}
+    }
 
-  gameOver(){
-      clearInterval(this.countDown);
-      this.audioController.gameOver();
-      document.getElementById("fail").classList.add("visible");
-  }
+    gameOver() {
+        clearInterval(this.countDown);
+        this.audioController.gameOver();
+        document.getElementById("fail").classList.add("visible");
+    }
 
-  victory(){
-      clearInterval(this.countDown);
-      this.audioController.victory();
-      document.getElementById("win").classList.add("visible");
-  }
+    victory() {
+        clearInterval(this.countDown);
+        this.audioController.victory();
+        document.getElementById("win").classList.add("visible");
+    }
 
 
-  shuffleCards(){ /* using the fisher/Yates shuffling algorithm
+    shuffleCards() { /* using the fisher/Yates shuffling algorithm
                             1) this algorithm takes an array and works through it backwards from [-1] to [0]
                             2) for each iteration, it creates a random INT which is >= 0 and <= to i
                             3) it then exchanges the random number created with the position of the one being iterated, And thats the shuffle! */
 
-        for(let i = this.cardsArray.length -1; i > 0; i--){
-                let randomIndex = Math.floor(Math.random() * (i+1));
-                this.cardsArray[randomIndex].style.order = i;
-                this.cardsArray[i].style.order = randomIndex;
+        for (let i = this.cardsArray.length - 1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * (i + 1));
+            this.cardsArray[randomIndex].style.order = i;
+            this.cardsArray[i].style.order = randomIndex;
         }
-  }
+    }
 
 
-  canFlipCard(card){
-     //return true; //for now will return true to check if I can flip the card.
-      return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
-  }
+    canFlipCard(card) {
+        //return true; //for now will return true to check if I can flip the card.
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
+    }
 
- getRandomFact(){
-      let spaceFacts = ["Mars Fact","Rover Fact","Astronaut Fact","Moon Fact","Galaxy Fact","Sun Fact","Nasa Fact","Star Fact"]; 
-      const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
-      return document.getElementById("spaceText").innerHTML = randomFact;
-  }
+    getRandomFact() {
+        let spaceFacts = ["Mars Fact", "Rover Fact", "Astronaut Fact", "Moon Fact", "Galaxy Fact", "Sun Fact", "Nasa Fact", "Star Fact"];
+        const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
+        return document.getElementById("spaceText").innerHTML = randomFact;
+    }
 
 
 }
 
 
 function ready() {
-  let overlays = Array.from(document.getElementsByClassName("status-overlay"));
-  let cards = Array.from(document.getElementsByClassName("card"));
-  let game = new gameLevel(100,cards);
+    let overlays = Array.from(document.getElementsByClassName("status-overlay"));
+    let cards = Array.from(document.getElementsByClassName("card"));
+    let game = new gameLevel(100, cards);
 
-  overlays.forEach((overlay) => {
-    overlay.addEventListener("click", () => {
-      overlay.classList.remove("visible");
-      game.startGame();
+    overlays.forEach((overlay) => {
+        overlay.addEventListener("click", () => {
+            overlay.classList.remove("visible");
+            game.startGame();
+        });
     });
-  });
 
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      game.flipCard(card);
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            game.flipCard(card);
+        });
     });
-  });
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", ready());
+    document.addEventListener("DOMContentLoaded", ready());
 } else {
-  ready();
+    ready();
 }
 
 //new gameLevel(100,cards);
