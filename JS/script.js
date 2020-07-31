@@ -1,4 +1,4 @@
-class AudioController {
+class AudioControls {
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
         this.flipMusic = new Audio("assets/soundFX/flipCardSound.wav");
@@ -6,7 +6,7 @@ class AudioController {
         this.victoryMusic = new Audio("assets/soundFX/victorySound.wav");
         this.gameOverMusic = new Audio("assets/soundFX/gameOverSound.wav");
         this.mainMusic.loop = true;
-        this.mainMusic.volume = 0.2;
+        this.mainMusic.volume = 0.5;
         this.flipMusic.volume = 0.5;
     }
 
@@ -49,7 +49,7 @@ class gameLevel {
         this.facts = document.getElementById("spaceText");
         this.timer = document.getElementById("timer-countDown");
         this.ticker = document.getElementById("flips-made");
-        this.audioController = new AudioController();
+        this.audioController = new AudioControls();
     }
     startGame() { //this function gets called everytime the game is started
         this.cardToCheck = null; // this property checks to see if the card is already flipped
@@ -174,9 +174,18 @@ class gameLevel {
     }
 
     getRandomFact() {
-        let spaceFacts = ["Mars Fact", "Rover Fact", "Astronaut Fact", "Moon Fact", "Galaxy Fact", "Sun Fact", "Nasa Fact", "Star Fact"];
-        const randomFact = spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
-        return document.getElementById("spaceText").innerHTML = randomFact;
+        const spaceFacts = ["At a constant temperature of 462° Celsius The hottest planet in our solar system is Venus",
+        "The highest mountain discovered is the Olympus Mons on Mars which at its peak is 25km making it 3 times taller than MT.Everest", 
+        "The Martian day (referred to as a Sol) is 24 hours 39 minutes and 35 seconds long",
+        "At 119 yards (109 meters) long, the International Space Station is the largest manned object ever sent into space.",
+        "At any given moment, there are at least 2,000 thunderstorms happening on Earth.", 
+        "There are approximately 100 thousand million stars in the Milky Way.", 
+        "The word “astronaut” means “star sailor” in its origins It is derived from the Greek words “astron”, meaning “star”, and “nautes”, which means “sailor”.",
+        "There are 5 Dwarf Planets recognized in our Solar System. The Dwarf Planets are Ceres, Makemake, Haumea, Eris and Pluto"];
+        const spaceText = document.getElementById('spaceText');
+        const options = spaceFacts.filter(fact => fact !== spaceText.textContent);
+        const randomIndex = Math.floor(Math.random() * options.length);
+        spaceText.textContent = options[randomIndex];
     }
 
 
