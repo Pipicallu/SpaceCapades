@@ -39,6 +39,8 @@ p {
     background-color: #252960;
     border-radius: 10px; 
 }
+
+
 /*--------------------------- Start Page  ---------------------------------*/
 
 .start-screen-bg{
@@ -88,6 +90,7 @@ p {
 .difficultyButtons {
     list-style: none;
     padding: 50px 0 0 0;
+    text-decoration: none;
 }
 
 .levelButton {
@@ -98,10 +101,13 @@ p {
     
 }
 
-
-.levelButton:hover{
+a {
     color: white;
-    
+}
+
+a:hover{
+    color:white;
+    text-decoration: none;
 }
 
 .cadetButton{
