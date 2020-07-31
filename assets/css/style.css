@@ -529,10 +529,13 @@ body{
 
 /*----- spaceText -------*/
 
+#spaceTextHolder{
+ text-align: center;
+}
+
 #spaceText{
     position: relative;
-    text-align: center;
-    justify-content: center;
+    display: inline;
     font-size: 25px;
     color: white;
     background-color: #262a60;
