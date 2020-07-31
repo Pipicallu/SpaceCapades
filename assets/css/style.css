@@ -525,3 +525,16 @@ body{
     transform: rotate(90deg);
     
 }
+
+
+/*----- spaceText -------*/
+
+#spaceText{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+    background-color: #262a60;
+
+}
