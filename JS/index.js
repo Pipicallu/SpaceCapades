@@ -5,9 +5,9 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-     $(".cadetButton").animate({bottom: '0px'}, 550);
-     $(".pilotButton").animate({bottom: '0px'}, 800);
-     $(".commanderButton").animate({bottom: '0px'}, 1000);
+     $("#cadetButton").animate({bottom: '0px'}, 550);
+     $("#pilotButton").animate({bottom: '0px'}, 800);
+     $("#commanderButton").animate({bottom: '0px'}, 1000);
 });
 
 
