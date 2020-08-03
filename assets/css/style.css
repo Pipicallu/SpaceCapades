@@ -110,7 +110,7 @@ a:hover{
     text-decoration: none;
 }
 
-.cadetButton{
+#cadetButton{
     background-color: #78ca78;
     border-bottom: 4px solid #519251;
     border-right: 4px solid #519251;
@@ -119,7 +119,7 @@ a:hover{
     bottom: -100px;
 }
 
-.pilotButton{
+#pilotButton{
     
     background-color: #6c29e9;
     border-bottom: 4px solid #521fb2;
@@ -129,7 +129,7 @@ a:hover{
     bottom: -100px;
 }
 
-.commanderButton{
+#commanderButton{
     
     background-color: #cf6464;
     border-bottom: 4px solid #854040;
@@ -410,6 +410,10 @@ body{
     75% {
         transform: rotate(30deg);
     }
+}
+
+.cardKiller{
+    display: none;
 }
 
 /*------ card design ----*/
