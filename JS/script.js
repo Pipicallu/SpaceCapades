@@ -8,6 +8,7 @@ class AudioControls {
         this.mainMusic.loop = true;
         this.mainMusic.volume = 0.5;
         this.flipMusic.volume = 0.5;
+        this.victoryMusic.volume = 0.5;
     }
 
     startMusic() {
@@ -169,7 +170,6 @@ class gameLevel {
 
 
     canFlipCard(card) {
-        //return true; //for now will return true to check if I can flip the card.
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
 
@@ -196,6 +196,9 @@ function ready() {
     let overlays = Array.from(document.getElementsByClassName("status-overlay"));
     let cards = Array.from(document.getElementsByClassName("card"));
     let game = new gameLevel(100, cards);
+    
+    startLevelOne();
+    startLevelTwo();
 
     overlays.forEach((overlay) => {
         overlay.addEventListener("click", () => {
@@ -211,10 +214,42 @@ function ready() {
     });
 }
 
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ready());
-} else {
-    ready();
+
+document.addEventListener("DOMContentLoaded", ready());
+
+
+function startLevelOne(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get("difficulty");
+    if(myParam == "cadet"){
+        let cards = Array.from(document.getElementsByClassName("level1"));
+        killLevel2Cards();
+        killLevel3Cards();
+    }
 }
 
-//new gameLevel(100,cards);
+function startLevelTwo(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get("difficulty");
+    if(myParam == "pilot"){
+        killLevel3Cards();
+    }
+}
+
+
+
+
+
+function killLevel2Cards(){
+    let levelTwoCards = Array.from(document.getElementsByClassName("level2")); 
+    for (i of levelTwoCards){
+    i.classList.add("cardKiller")
+    }
+}
+
+function killLevel3Cards(){
+    let levelThreeCards = Array.from(document.getElementsByClassName("level3")); 
+    for (i of levelThreeCards){
+    i.classList.add("cardKiller")
+    }
+}s
