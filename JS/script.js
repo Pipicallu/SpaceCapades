@@ -44,7 +44,7 @@ class AudioControls {
 
 class gameLevel {
     constructor(totalTime, cards) {
-        this.cardsArray = cards;
+        this.cardsArray = startLevelDifficulty();
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
         this.facts = document.getElementById("spaceText");
@@ -115,8 +115,11 @@ class gameLevel {
         this.audioController.match();
         this.getRandomFact();
     
-
+        console.log("cardsArray", this.cardsArray);
+        console.log("matched cards", this.matchedCards);
+        
         if (this.matchedCards.length === this.cardsArray.length) {
+            console.log("Victory");
             this.victory();
         }
         
@@ -187,7 +190,7 @@ class gameLevel {
         const randomIndex = Math.floor(Math.random() * options.length);
         spaceText.textContent = options[randomIndex];
     }
-
+s
 
 }
 
@@ -197,8 +200,9 @@ function ready() {
     let cards = Array.from(document.getElementsByClassName("card"));
     let game = new gameLevel(100, cards);
     
-    startLevelOne();
-    startLevelTwo();
+    cards = startLevelDifficulty(cards);
+
+    console.log(cards);
 
     overlays.forEach((overlay) => {
         overlay.addEventListener("click", () => {
@@ -218,23 +222,23 @@ function ready() {
 document.addEventListener("DOMContentLoaded", ready());
 
 
-function startLevelOne(){
+function startLevelDifficulty(cards){
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get("difficulty");
     if(myParam == "cadet"){
-        let cards = Array.from(document.getElementsByClassName("level1"));
+        cards = Array.from(document.getElementsByClassName("level1"));
         killLevel2Cards();
         killLevel3Cards();
-    }
+    } else if(myParam == "pilot"){
+        lvl1 = Array.from(document.getElementsByClassName("level1"));
+        lvl2 = Array.from(document.getElementsByClassName("level2"))
+        cards = lvl1.concat(lvl2);
+        killLevel3Cards();
+    } else cards = Array.from(document.getElementsByClassName("card"));
+
+    return cards;
 }
 
-function startLevelTwo(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get("difficulty");
-    if(myParam == "pilot"){
-        killLevel3Cards();
-    }
-}
 
 
 
@@ -252,4 +256,4 @@ function killLevel3Cards(){
     for (i of levelThreeCards){
     i.classList.add("cardKiller")
     }
-}s
+}
