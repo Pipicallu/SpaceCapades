@@ -103,11 +103,20 @@ p {
 
 a {
     color: white;
+    text-decoration: none;
 }
 
 a:hover{
     color:white;
     text-decoration: none;
+}
+
+.btn{
+    padding: .7rem .75rem;
+}
+
+.btn:hover{
+    color: white;
 }
 
 #cadetButton{
