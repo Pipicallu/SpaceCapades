@@ -43,7 +43,7 @@ class AudioControls {
 }
 
 class gameLevel {
-    constructor(totalTime, cards) {
+    constructor(totalTime) {
         this.cardsArray = startLevelDifficulty();
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
@@ -198,7 +198,7 @@ s
 function ready() {
     let overlays = Array.from(document.getElementsByClassName("status-overlay"));
     let cards = Array.from(document.getElementsByClassName("card"));
-    let game = new gameLevel(100, cards);
+    let game = new gameLevel(100);
     
     cards = startLevelDifficulty(cards);
 
