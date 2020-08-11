@@ -11,10 +11,8 @@
 
 # To Do
 
-* Create level switcher class to create changes in difficulty between cadet pilot and commander options
-* add sounds to level
+
 * connect with google firebase to create a database of high scores 
-* add fact when cards are matched
 * style FrontIMGs on cards so as to be colored in 
 * customise dance animation 
 
