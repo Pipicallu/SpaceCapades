@@ -101,6 +101,14 @@ p {
     
 }
 
+.restartButton {
+    width: 240px;
+    height: 50px;
+    margin: 8px;
+    color: white;
+    
+}
+
 a {
     color: white;
     text-decoration: none;
@@ -146,6 +154,24 @@ a:hover{
     box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     bottom: -100px;
+}
+
+#startScreenButton{
+    background-color: #78ca78;
+    border-bottom: 4px solid #519251;
+    border-right: 4px solid #519251;
+    box-shadow: 0.2px 2px 10px 2px #22222499;
+    position: relative;
+    
+}
+#tryAgainButton{
+    
+    background-color: #cf6464;
+    border-bottom: 4px solid #854040;
+    border-right: 4px solid #854040;
+    box-shadow: 0.2px 2px 10px 2px #252960;
+    position: relative;
+    
 }
 
 /*------- Game page ----------*/ 
@@ -559,4 +585,16 @@ body{
     color: white;
     background-color: #262a60;
 
+}
+
+/*------- Media Queries -------*/
+
+@media (max-width:600px){
+    .game-container{
+        grid-template-columns: repeat(2,auto);
+    }
+    .game-info-container{
+        flex-direction: column;
+        align-items: center;
+    }
 }
