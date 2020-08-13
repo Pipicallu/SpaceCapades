@@ -172,10 +172,53 @@ a:hover{
     box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     
+    
+}
+
+#hiScoreButton{
+    background-color: #d6be49;
+    border-bottom: 4px solid #9c8a31;
+    border-right: 4px solid #9c8a31;
+    box-shadow: 0.2px 2px 10px 2px #252960;
+    position: relative;
+    z-index: 100;
+    bottom: -100px;
+}
+.hiScoreButtonSize{
+    
+    width: 80px;
+    height: 30px;
+    margin: 8px;
+    color: white;
+}
+
+.hiScoreButtonSize.btn{
+    padding: .17rem .25rem;
+}
+
+/*------ hi-Score Overlay --------*/
+#hiScoreOverlay{
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+     justify-content: center;
+    /* align-items: center; */
+    z-index: 99;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+ 
+
+
+.table{
+    color: white;
 }
 
 /*------- Game page ----------*/ 
-/*---overlays---*/
+/*---Game overlays---*/
 .status-overlay{
     display: none;
     position: fixed;
