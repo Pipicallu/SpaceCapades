@@ -24,8 +24,83 @@
   </head>
   <body>
     <!-- Title Screen -->
-  
+   <div id="hiScoreOverlay"  >
+   <table class="table text-justify">
+  <thead>
+    <tr>
+      <th scope="col"><i class="fas fa-trophy"></i></th>
+      <th scope="col">Name</th>
+      <th scope="col">Time left</th>
+      <th scope="col">Flips</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td class="winName"></td>
+      <td class="winTime"></td>
+      <td class="winFlips"></td>
+    </tr>
+    
+  </tbody>
+  </table>
+   </div>
     <section class="container-fluid start-screen-container start-screen-bg">
+    
       <div class="row">
       <div class="opaque-overlay">&nbsp;</div>
         <div class="col d-flex justify-content-center">
@@ -44,6 +119,11 @@
 
           </div>
         </div>
+      </div>
+      <div class="row justify-content-center" >
+      <div class="col-4 d-flex justify-content-center">
+      <a href="#" type="button" onclick="showHiScores()" id="hiScoreButton" class="btn hiScoreButtonSize"><i class="fas fa-trophy"></i></a>
+      </div>
       </div>
     </section>
     <!--To Do: research  async defer for tags-->
