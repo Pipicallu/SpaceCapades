@@ -8,6 +8,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js" defer></script>
 	<script type="text/javascript" src="../JS/script.js" async></script>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
@@ -22,13 +25,23 @@
 </head>
 
 <body>
+
+<!----------------------------Overlays----------------->
 	<div class="status-overlay visible">Click to Start!</div>
 	<div id="fail" class="status-overlay">Failure to Launch.
 		<span class="overlay-text-small  ">Click here to try again!
         </span>
 		<img class="rocketFail" src="assets/images/rocketWhite.png" alt="rocket">
     </div>
-		<div id="win" class="status-overlay">Houston, We Have Lift Off!
+		<div id="win" class="victory-overlay">Houston, We Have Lift Off!
+            <span class="overlay-text-small">Register your Hi-Score:</span>
+            <form id="inputHiScore" class="hi-score-form">
+            <input type="text" id="name" class="nameInputBox" placeholder="AAA">
+            <span id="victoryTime" class="score-readings"></span>
+            <span id="finalFlips" class="score-readings"></span>
+            <button  id="submitHiScore" class="submit-style">Submit</button>
+            </form>
+
 			<a type="button" id="tryAgainButton" class="btn  restartButton hvr-pulse-shrink">Try Again</a>
             <a type="button" id="startScreenButton" class="btn  restartButton hvr-pulse-shrink" href="index.html">Start Screen</a>
 			<img class="rocketWin1" src="assets/images/rocketWhite.png " alt="rocket">

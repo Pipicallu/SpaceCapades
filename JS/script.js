@@ -1,4 +1,4 @@
-class AudioControls {
+class AudioControls { // Controls for all game sounds
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
         this.flipMusic = new Audio("assets/soundFX/flipCardSound.wav");
@@ -6,9 +6,9 @@ class AudioControls {
         this.victoryMusic = new Audio("assets/soundFX/victorySound.wav");
         this.gameOverMusic = new Audio("assets/soundFX/gameOverSound.wav");
         this.mainMusic.loop = true;
-        this.mainMusic.volume = 0.5;
+        this.mainMusic.volume = 0.8;
         this.flipMusic.volume = 0.5;
-        this.victoryMusic.volume = 0.5;
+        this.victoryMusic.volume = 0.2;
     }
 
     startMusic() {
@@ -42,7 +42,7 @@ class AudioControls {
 
 }
 
-class gameLevel {
+class GameLevel {
     constructor(totalTime) {
         this.cardsArray = startLevelDifficulty();
         this.totalTime = totalTime;
@@ -121,6 +121,7 @@ class gameLevel {
         if (this.matchedCards.length === this.cardsArray.length) {
             console.log("Victory");
             this.victory();
+            
         }
         
     }
@@ -156,18 +157,21 @@ class gameLevel {
         clearInterval(this.countDown);
         this.audioController.victory();
         document.getElementById("win").classList.add("visible");
+        this.showVictoryTime();
+        this.showVictoryFlips();
+        
     }
 
-
-    shuffleCards() { /* using the fisher/Yates shuffling algorithm
-                            1) this algorithm takes an array and works through it backwards from [-1] to [0]
-                            2) for each iteration, it creates a random INT which is >= 0 and <= to i
-                            3) it then exchanges the random number created with the position of the one being iterated, And thats the shuffle! */
-
+/* using the fisher/Yates shuffling algorithm
+     1) this algorithm takes an array and works through it backwards from [-1] to [0]
+     2) for each iteration, it creates a random INT which is >= 0 and <= to i
+     3) it then exchanges the random number created with the position of the one being iterated, And thats the shuffle! */
+    shuffleCards() { 
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
             this.cardsArray[randomIndex].style.order = i;
-            this.cardsArray[i].style.order = randomIndex;
+            // this property randomIndex is the entire reason I used css grid rather than bootstrap on this page.
+            this.cardsArray[i].style.order = randomIndex; 
         }
     }
 
@@ -177,20 +181,31 @@ class gameLevel {
     }
 
     getRandomFact() {
-        const spaceFacts = ["At a constant temperature of 462° Celsius The hottest planet in our solar system is Venus",
-        "The highest mountain discovered is the Olympus Mons on Mars which at its peak is 25km making it 3 times taller than MT.Everest", 
-        "The Martian day (referred to as a Sol) is 24 hours 39 minutes and 35 seconds long",
-        "At 119 yards (109 meters) long, the International Space Station is the largest manned object ever sent into space.",
-        "At any given moment, there are at least 2,000 thunderstorms happening on Earth.", 
-        "There are approximately 100 thousand million stars in the Milky Way.", 
-        "The word “astronaut” means “star sailor” in its origins It is derived from the Greek words “astron”, meaning “star”, and “nautes”, which means “sailor”.",
-        "There are 5 Dwarf Planets recognized in our Solar System. The Dwarf Planets are Ceres, Makemake, Haumea, Eris and Pluto"];
+        const spaceFacts = 
+            ["At a constant temperature of 462° Celsius The hottest planet in our solar system is Venus",
+            "The highest mountain discovered is the Olympus Mons on Mars which at its peak is 25km making it 3 times taller than MT.Everest", 
+            "The Martian day (referred to as a Sol) is 24 hours 39 minutes and 35 seconds long",
+            "At 119 yards (109 meters) long, the International Space Station is the largest manned object ever sent into space.",
+            "At any given moment, there are at least 2,000 thunderstorms happening on Earth.", 
+            "There are approximately 100 thousand million stars in the Milky Way.", 
+            "The word “astronaut” means “star sailor” in its origins It is derived from the Greek words “astron”, meaning “star”, and “nautes”, which means “sailor”.",
+            "There are 5 Dwarf Planets recognized in our Solar System. The Dwarf Planets are Ceres, Makemake, Haumea, Eris and Pluto"];
         const spaceText = document.getElementById('spaceText');
         const options = spaceFacts.filter(fact => fact !== spaceText.textContent);
         const randomIndex = Math.floor(Math.random() * options.length);
         spaceText.textContent = options[randomIndex];
     }
-s
+
+    showVictoryTime() {
+       let timeLeft = parseInt(document.getElementById("timer-countDown").innerHTML);
+       let winningTime = 100 - timeLeft;
+       document.getElementById("victoryTime").innerHTML = `Time: ${winningTime}s`;
+    }
+    
+    showVictoryFlips() {
+       let winningflipCount = parseInt(document.getElementById("flips-made").innerHTML);
+       document.getElementById("finalFlips").innerHTML = `Flips: ${winningflipCount}`;
+    }
 
 }
 
@@ -198,7 +213,8 @@ s
 function ready() {
     let overlays = Array.from(document.getElementsByClassName("status-overlay"));
     let cards = Array.from(document.getElementsByClassName("card"));
-    let game = new gameLevel(100);
+    let tryAgain = document.getElementById("tryAgainButton");
+    let game = new GameLevel(100);
     
     cards = startLevelDifficulty(cards);
 
@@ -211,6 +227,12 @@ function ready() {
         });
     });
 
+    tryAgain.addEventListener("click", () =>{
+            victoryScreen = document.getElementById("win");
+            victoryScreen.classList.remove("visible");
+            game.startGame();
+    });
+
     cards.forEach((card) => {
         card.addEventListener("click", () => {
             game.flipCard(card);
@@ -221,7 +243,7 @@ function ready() {
 
 document.addEventListener("DOMContentLoaded", ready());
 
-
+/*-----level difficulty functions-----*/
 function startLevelDifficulty(cards){
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get("difficulty");
@@ -239,11 +261,6 @@ function startLevelDifficulty(cards){
     return cards;
 }
 
-
-
-
-
-
 function killLevel2Cards(){
     let levelTwoCards = Array.from(document.getElementsByClassName("level2")); 
     for (i of levelTwoCards){
@@ -257,3 +274,33 @@ function killLevel3Cards(){
     i.classList.add("cardKiller")
     }
 }
+
+
+var firebaseConfig = {
+    apiKey: "AIzaSyDISc4XEXHikCPEeFrtR2ItnrJDqLRkv_I",
+    authDomain: "highscores-6ce17.firebaseapp.com",
+    databaseURL: "https://highscores-6ce17.firebaseio.com",
+    projectId: "highscores-6ce17",
+    storageBucket: "highscores-6ce17.appspot.com",
+    messagingSenderId: "305834552779",
+    appId: "1:305834552779:web:6dbb29ca7da2227307da4e",
+    measurementId: "G-XFBMC4636C"
+};
+
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+const db = firebase.firestore();
+const form = document.querySelector("#inputHiScore");
+
+//saving data 
+form.addEventListener("submit", (eventObj) => {
+    // prevents page refresh
+    eventObj.preventDefault();
+    db.collection("Hi-Scores").add({
+        Name: form.name.value,
+        Time: `${parseInt(document.getElementById("timer-countDown").innerHTML)}s`,
+        Flips: parseInt(document.getElementById("flips-made").innerHTML)
+    });
+     form.reset()
+})
