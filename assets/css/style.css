@@ -204,8 +204,7 @@ a:hover{
     left: 0;
     right: 0;
     bottom: 0;
-     justify-content: center;
-    /* align-items: center; */
+    justify-content: center;
     z-index: 99;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
@@ -232,7 +231,29 @@ a:hover{
     color: white;
 }
 
+.victory-overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+     justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+}
+
+
+
 .status-overlay.visible{
+    display: flex;
+    flex-direction: column;
+    animation: pulse 1.8s infinite linear;
+
+}
+
+.victory-overlay.visible{
     display: flex;
     flex-direction: column;
     animation: pulse 1.8s infinite linear;
@@ -641,3 +662,35 @@ body{
         align-items: center;
     }
 }
+
+/*-----------high score form ------------*/
+.nameInputBox{   
+    width: 80px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    text-decoration: none;
+
+}
+
+.submit-style{
+    font-size: 16px;
+    border: none;
+    background-color: #d6be49;
+    border-bottom: 3px solid #9c8a31;
+    border-right: 3px solid #9c8a31;
+    border-radius: 3px;
+    color: white;
+}
+
+.hi-score-form{
+    font-size: 16px;
+
+}
+
+.score-readings{
+ padding: 0 5px;
+}
+
