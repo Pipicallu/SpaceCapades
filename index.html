@@ -12,125 +12,175 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
-		type="text/css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
+      type="text/css"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    
+    <script
+      src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"
+      defer
+    ></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"
+      defer
+    ></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"
+      defer
+    ></script>
+
     <title>SpaceCapades</title>
   </head>
   <body>
     <!-- Title Screen -->
-   <div id="hiScoreOverlay"  >
-   <table class="table text-justify">
-  <thead>
-    <tr>
-      <th scope="col"><i class="fas fa-trophy"></i></th>
-      <th scope="col">Name</th>
-      <th scope="col">Time left</th>
-      <th scope="col">Flips</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">9</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    <tr>
-      <th scope="row">10</th>
-      <td class="winName"></td>
-      <td class="winTime"></td>
-      <td class="winFlips"></td>
-    </tr>
-    
-  </tbody>
-  </table>
-   </div>
+    <div id="hiScoreOverlay">
+      <table class="table text-justify">
+        <thead>
+          <tr>
+            <th scope="col"><i class="fas fa-trophy"></i></th>
+            <th scope="col">Name</th>
+            <th scope="col">Time left</th>
+            <th scope="col">Flips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td class="winName"></td>
+            <td class="winTime"></td>
+            <td class="winFlips"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <section class="container-fluid start-screen-container start-screen-bg">
-    
       <div class="row">
-      <div class="opaque-overlay">&nbsp;</div>
+        <div class="opaque-overlay">&nbsp;</div>
         <div class="col d-flex justify-content-center">
           <div class="text-center">
-           <h2 id="space-title">SPACECAPADES</h2> 
+            <h2 id="space-title">SPACECAPADES</h2>
 
-           <img class="saturn-position" src="assets/images/saturnWhite.png" alt="saturn" width="200" height="200">
-            <p> Choose your difficulty:</p>
+            <img
+              class="saturn-position"
+              src="assets/images/saturnWhite.png"
+              alt="saturn"
+              width="200"
+              height="200"
+            />
+            <p>Choose your difficulty:</p>
             <div class="buttonPositions">
-             <ul class ="difficultyButtons">
-                <li><a type="button" id="cadetButton" class="btn  levelButton hvr-pulse-shrink" href="game.html?difficulty=cadet">CADET</a></li>
-                <li><a type="button" id="pilotButton" class="btn  levelButton hvr-pulse-shrink" href="game.html?difficulty=pilot">PILOT</a></li>
-               <li><a type="button" id="commanderButton" class="btn  levelButton hvr-pulse-shrink" href="game.html">COMMANDER</a></li> 
-             </ul>
+              <ul class="difficultyButtons">
+                <li>
+                  <a
+                    type="button"
+                    id="cadetButton"
+                    class="btn levelButton hvr-pulse-shrink"
+                    href="game.html?difficulty=cadet"
+                    >CADET</a
+                  >
+                </li>
+                <li>
+                  <a
+                    type="button"
+                    id="pilotButton"
+                    class="btn levelButton hvr-pulse-shrink"
+                    href="game.html?difficulty=pilot"
+                    >PILOT</a
+                  >
+                </li>
+                <li>
+                  <a
+                    type="button"
+                    id="commanderButton"
+                    class="btn levelButton hvr-pulse-shrink"
+                    href="game.html"
+                    >COMMANDER</a
+                  >
+                </li>
+              </ul>
             </div>
-
           </div>
         </div>
       </div>
-      <div class="row justify-content-center" >
-      <div class="col-4 d-flex justify-content-center">
-      <a href="#" type="button" onclick="showHiScores()" id="hiScoreButton" class="btn hiScoreButtonSize"><i class="fas fa-trophy"></i></a>
-      </div>
+      <div class="row justify-content-center">
+        <div class="col-4 d-flex justify-content-center">
+          <a
+            href="#"
+            type="button"
+            onclick="showHiScores()"
+            id="hiScoreButton"
+            class="btn hiScoreButtonSize hvr-pulse-shrink"
+            ><i class="fas fa-trophy"></i
+          ></a>
+        </div>
       </div>
     </section>
     <!--To Do: research  async defer for tags-->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../JS/index.js" async></script>
     <script typle="text/javascript" src="../JS/script.js" async></script>
-  </body> 
+  </body>
 </html>
