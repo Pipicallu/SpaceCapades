@@ -1,3 +1,4 @@
+
 class AudioControls { // Controls for all game sounds
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
@@ -276,31 +277,6 @@ function killLevel3Cards(){
 }
 
 
-var firebaseConfig = {
-    apiKey: "AIzaSyDISc4XEXHikCPEeFrtR2ItnrJDqLRkv_I",
-    authDomain: "highscores-6ce17.firebaseapp.com",
-    databaseURL: "https://highscores-6ce17.firebaseio.com",
-    projectId: "highscores-6ce17",
-    storageBucket: "highscores-6ce17.appspot.com",
-    messagingSenderId: "305834552779",
-    appId: "1:305834552779:web:6dbb29ca7da2227307da4e",
-    measurementId: "G-XFBMC4636C"
-};
 
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
-const db = firebase.firestore();
-const form = document.querySelector("#inputHiScore");
-
-//saving data 
-form.addEventListener("submit", (eventObj) => {
-    // prevents page refresh
-    eventObj.preventDefault();
-    db.collection("Hi-Scores").add({
-        Name: form.name.value,
-        Time: `${parseInt(document.getElementById("timer-countDown").innerHTML)}s`,
-        Flips: parseInt(document.getElementById("flips-made").innerHTML)
-    });
-     form.reset()
-})
+ 
