@@ -1,411 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js" defer></script>
-	<script type="text/javascript" src="../JS/script.js" async></script>
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
-		type="text/css" />
-	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
-	<link rel="stylesheet" href="assets/css/style.css" />
-
-
-	<title>SpaceCapades</title>
-</head>
-
-<body>
-
-<!----------------------------Overlays----------------->
-	<div class="status-overlay visible">Click to Start!</div>
-	<div id="fail" class="status-overlay">Failure to Launch.
-		<span class="overlay-text-small  ">Click here to try again!
-        </span>
-		<img class="rocketFail" src="assets/images/rocketWhite.png" alt="rocket">
-    </div>
-		<div id="win" class="victory-overlay">Houston, We Have Lift Off!
-            <span class="overlay-text-small">Register your Hi-Score:</span>
-            <form id="inputHiScore" class="hi-score-form">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" defer></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js" defer></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js" defer></script>
+      <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js" defer></script>
+      <script type="text/javascript" src="JS/index.js" async></script>
+      <script type="text/javascript" src="JS/script.js" async></script>
+      <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css"
+         type="text/css" />
+      <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="assets/css/style.css" />
+      <title>SpaceCapades</title>
+   </head>
+   <body>
+      <!----------------------------Overlays----------------->
+      <div class="status-overlay visible">Click to Start!</div>
+      <div id="fail" class="status-overlay">Failure to Launch.
+         <span class="overlay-text-small  ">Click here to try again!
+         </span>
+         <img class="rocketFail" src="assets/images/rocketWhite.png" alt="rocket">
+      </div>
+      <div id="win" class="victory-overlay">
+         Houston, We Have Lift Off!
+         <span class="overlay-text-small">Register your Hi-Score:</span>
+         <form id="inputHiScore" class="hi-score-form">
             <input type="text" id="name" class="nameInputBox" placeholder="AAA">
             <span id="victoryTime" class="score-readings"></span>
             <span id="finalFlips" class="score-readings"></span>
             <button  id="submitHiScore" class="submit-style">Submit</button>
-            </form>
-
-			<a type="button" id="tryAgainButton" class="btn  restartButton hvr-pulse-shrink">Try Again</a>
-            <a type="button" id="startScreenButton" class="btn  restartButton hvr-pulse-shrink" href="index.html">Start Screen</a>
-			<img class="rocketWin1" src="assets/images/rocketWhite.png " alt="rocket">
-			<img class="rocketWin2" src="assets/images/rocketWhite.png" alt="rocket">
-			<img class="rocketWin3" src="assets/images/rocketWhite.png" alt="rocket">
-    </div>
-    
-<div class="opaque-overlay">&nbsp;</div>
-			<!---- game information row-->
-            
-           <div id="spaceTextHolder"><div id="spaceText"></div></div>
-			<div class="game-container game-background ">
-				<div class="game-info-container ">
-					<div class=" game-info">
-						Time: <span id="timer-countDown">100</span>
-					</div>
-					<div class=" game-info">
-						Flips: <span id="flips-made">0</span>
-					</div>
-</div>
-
-					<!--------Card Section-->
-					<div class="card level1">
-						<div class="card-back card-face">
-							<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-							<span class="card-back-title">SPACECAPADES</span>
-							<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-							<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-							<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-							<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
- </div>
-							<div class="card-front card-face">
-								<img class="frontIMG" src="assets/images/marsColor.png" alt="mars">
-								<!-- <span class="card-back-title">SPACECAPADES</span> -->
-								<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-								<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-								<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-								<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
- </div>
-							</div>
-
-							<div class="card level1">
-								<div class="card-back card-face">
-									<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-									<span class="card-back-title">SPACECAPADES</span>
-									<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-									<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-									<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-									<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-									<div class="card-front card-face">
-										<img class="frontIMG" src="assets/images/marsColor.png" alt="mars">
-										<!-- <span class="card-back-title">SPACECAPADES</span> -->
-										<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-										<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-										<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-										<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-									</div>
-									<div class="card level1">
-										<div class="card-back card-face">
-											<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-											<span class="card-back-title">SPACECAPADES</span>
-											<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-											<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-											<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-											<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-											<div class="card-front card-face">
-												<img class="frontIMG" src="assets/images/alien.png" alt="alien">
-												<!-- <span class="card-back-title">SPACECAPADES</span> -->
-												<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-												<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-												<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-												<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-											</div>
-											<div class="card level1">
-												<div class="card-back card-face">
-													<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-													<span class="card-back-title">SPACECAPADES</span>
-													<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-													<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-													<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-													<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-													<div class="card-front card-face">
-														<img class="frontIMG" src="assets/images/alien.png" alt="alien">
-														<!-- <span class="card-back-title">SPACECAPADES</span> -->
-														<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-														<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-														<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-														<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
- </div>
-													</div>
-
-
-													<div class="card level1">
-														<div class="card-back card-face">
-															<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-															<span class="card-back-title">SPACECAPADES</span>
-															<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-															<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-															<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-															<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-															<div class="card-front card-face">
-																<img class="frontIMG" src="assets/images/astronaut.png" alt="astronaut">
-																<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
- </div>
-															</div>
-
-															<div class="card level1">
-																<div class="card-back card-face">
-																	<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																	<span class="card-back-title">SPACECAPADES</span>
-																	<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																	<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																	<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																	<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																	<div class="card-front card-face">
-																		<img class="frontIMG" src="assets/images/astronaut.png" alt="astronaut">
-																		<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																		<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																		<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																		<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																		<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																	</div>
-
-
-																	<div class="card level1">
-																		<div class="card-back card-face">
-																			<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																			<span class="card-back-title">SPACECAPADES</span>
-																			<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																			<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																			<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																			<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																			<div class="card-front card-face">
-																				<img class="frontIMG" src="assets/images/marsrover.png" alt="mars rover">
-																				<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																				<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																				<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																				<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																				<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																			</div>
-
-
-																			<div class="card level1">
-																				<div class="card-back card-face">
-																					<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																					<span class="card-back-title">SPACECAPADES</span>
-																					<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																					<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																					<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																					<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																					<div class="card-front card-face">
-																						<img class="frontIMG" src="assets/images/marsrover.png" alt="mars rover">
-																						<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																						<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																						<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																						<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																						<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																					</div>
-
-
-
-
-																					<div class="card level2">
-																						<div
-																							class="card-back card-face">
-																							<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																							<span class="card-back-title">SPACECAPADES</span>
-																							<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																							<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																							<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																							<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																							<div
-																								class="card-front card-face">
-																								<img class="frontIMG" src="assets/images/telescope.png" alt="telescope">
-																								<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																								<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																								<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																								<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																								<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																							</div>
-
-
-																							<div class="card level2">
-																								<div
-																									class="card-back card-face">
-																									<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																									<span class="card-back-title">SPACECAPADES</span>
-																									<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																									<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																									<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																									<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																									<div
-																										class="card-front card-face">
-																										<img class="frontIMG" src="assets/images/telescope.png" alt="telescope">
-																										<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																										<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																										<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																										<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																										<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																									</div>
-
-
-																									<div
-																										class="card level2">
-																										<div
-																											class="card-back card-face">
-																											<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																											<span class="card-back-title">SPACECAPADES</span>
-																											<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																											<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																											<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																											<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																											<div
-																												class="card-front card-face">
-																												<img class="frontIMG" src="assets/images/shuttle.png" alt="shuttle">
-																												<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																												<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																												<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																												<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																												<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																											</div>
-
-
-																											<div
-																												class="card level2">
-																												<div
-																													class="card-back card-face">
-																													<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																													<span class="card-back-title">SPACECAPADES</span>
-																													<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																													<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																													<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																													<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																													<div
-																														class="card-front card-face">
-																														<img class="frontIMG" src="assets/images/shuttle.png" alt="shuttle">
-																														<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																														<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																														<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																														<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																														<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																													</div>
-
-
-
-																													<div
-																														class="card level3">
-																														<div
-																															class="card-back card-face">
-																															<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																															<span class="card-back-title">SPACECAPADES</span>
-																															<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																															<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																															<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																															<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																															<div
-																																class="card-front card-face">
-																																<img class="frontIMG" src="assets/images/moon.png" alt="moon">
-																																<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																																<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																																<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																															</div>
-
-
-																															<div
-																																class="card level3">
-																																<div
-																																	class="card-back card-face">
-																																	<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																																	<span class="card-back-title">SPACECAPADES</span>
-																																	<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																	<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																																	<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																	<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																																	<div
-																																		class="card-front card-face">
-																																		<img class="frontIMG" src="assets/images/moon.png" alt="moon">
-																																		<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																																		<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																		<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																																		<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																		<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																																	</div>
-
-
-																																	<div
-																																		class="card level3">
-																																		<div
-																																			class="card-back card-face">
-																																			<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																																			<span class="card-back-title">SPACECAPADES</span>
-																																			<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																			<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																																			<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																			<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																																			<div
-																																				class="card-front card-face">
-																																				<img class="frontIMG" src="assets/images/solarSystem.png" alt="solar system">
-																																				<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																																				<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																				<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																																				<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																				<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																																			</div>
-
-
-																																			<div
-																																				class="card level3">
-																																				<div
-																																					class="card-back card-face">
-																																					<img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
-																																					<span class="card-back-title">SPACECAPADES</span>
-																																					<img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																					<img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
-																																					<img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
-																																					<img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
-</div>
-																																					<div
-																																						class="card-front card-face">
-																																						<img class="frontIMG" src="assets/images/solarSystem.png" alt="solar system">
-																																						<!-- <span class="card-back-title">SPACECAPADES</span> -->
-																																						<img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																						<img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
-																																						<img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
-																																						<img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
-</div>
-																																					</div>
-
-
-																																					<!--To Do: research  async defer for tags-->
-
-																																			</div>
-</body>
-
+         </form>
+         <a type="button" id="tryAgainButton" class="btn  restartButton hvr-pulse-shrink">Try Again</a>
+         <a type="button" id="startScreenButton" class="btn  restartButton hvr-pulse-shrink" href="index.html">Start Screen</a>
+         <img class="rocketWin1" src="assets/images/rocketWhite.png " alt="rocket">
+         <img class="rocketWin2" src="assets/images/rocketWhite.png" alt="rocket">
+         <img class="rocketWin3" src="assets/images/rocketWhite.png" alt="rocket">
+      </div>
+      <div class="opaque-overlay">&nbsp;</div>
+      <!---- game information row-->
+      <div id="spaceTextHolder">
+         <div id="spaceText"></div>
+      </div>
+      <div class="game-container game-background ">
+         <div class="game-info-container ">
+            <div class=" game-info">
+               Time: <span id="timer-countDown">100</span>
+            </div>
+            <div class=" game-info">
+               Flips: <span id="flips-made">0</span>
+            </div>
+         </div>
+         <!--------Card Section-->
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/marsColor.png" alt="mars">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/marsColor.png" alt="mars">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/alien.png" alt="alien">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/alien.png" alt="alien">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/astronaut.png" alt="astronaut">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/astronaut.png" alt="astronaut">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/marsrover.png" alt="mars rover">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level1">
+            <div class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div class="card-front card-face">
+               <img class="frontIMG" src="assets/images/marsrover.png" alt="mars rover">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level2">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/telescope.png" alt="telescope">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div class="card level2">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/telescope.png" alt="telescope">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level2">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/shuttle.png" alt="shuttle">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level2">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/shuttle.png" alt="shuttle">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level3">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/moon.png" alt="moon">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level3">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/moon.png" alt="moon">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level3">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/solarSystem.png" alt="solar system">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <div
+            class="card level3">
+            <div
+               class="card-back card-face">
+               <img class="saturn" src="assets/images/saturnWhite.png" alt="saturn">
+               <span class="card-back-title">SPACECAPADES</span>
+               <img class="rocket rocket-top-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketWhite.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketWhite.png" alt="rocketship">
+            </div>
+            <div
+               class="card-front card-face">
+               <img class="frontIMG" src="assets/images/solarSystem.png" alt="solar system">
+               <!-- <span class="card-back-title">SPACECAPADES</span> -->
+               <img class="rocket rocket-top-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-top-right" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket rocket-bottom-left" src="assets/images/rocketColor.png" alt="rocketship">
+               <img class="rocket  rocket-bottom-right" src="assets/images/rocketColor.png" alt="rocketship">
+            </div>
+         </div>
+         <!--To Do: research  async defer for tags-->
+      </div>
+   </body>
 </html>
