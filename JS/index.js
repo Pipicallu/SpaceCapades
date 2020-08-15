@@ -73,7 +73,7 @@ function renderScore(doc){
 }
 
 
-    db.collection("Hi-Scores").get().then((snapshot) => {
+    db.collection("Hi-Scores").orderBy("Time", "desc").limit(10).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             renderScore(doc);
         });
