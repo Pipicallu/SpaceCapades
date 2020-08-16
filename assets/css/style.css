@@ -396,13 +396,14 @@ a:hover{
     animation: blast 2.2s;
     animation-iteration-count: infinite;
     animation-delay: 700ms;
+    z-index: -1;
 }
 @keyframes blast {
     from {
         top: 100px;
     }
     to {
-        top: -500px;
+        top: -600px;
     }
 }
 
@@ -435,7 +436,7 @@ a:hover{
         top: 0px;
     }
     to {
-        top: -600px;
+        top: -800px;
     }
 }
 
