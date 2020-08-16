@@ -298,6 +298,12 @@ a:hover{
    
 }
 
+.winTitle{
+    font-size: 4rem;
+    margin-top: 3em;
+    padding: 50px 10px;
+}
+
 @keyframes crash{
    
     0%{
@@ -687,7 +693,8 @@ body{
 
 .hi-score-form{
     font-size: 16px;
-
+    padding: 40px 20px;
+    
 }
 
 .score-readings{
