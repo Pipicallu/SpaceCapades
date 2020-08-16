@@ -1,4 +1,4 @@
-
+  /*-----------------------------Sounds-----------------------------*/
 class AudioControls { // Controls for all game sounds
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
@@ -42,7 +42,7 @@ class AudioControls { // Controls for all game sounds
 
 
 }
-
+/*-------------------Core Game----------------------- */
 class GameLevel {
     constructor(totalTime) {
         this.cardsArray = startLevelDifficulty();
@@ -229,7 +229,7 @@ function ready() {
     });
 
     tryAgain.addEventListener("click", () =>{
-            victoryScreen = document.getElementById("win");
+          let  victoryScreen = document.getElementById("win");
             victoryScreen.classList.remove("visible");
             game.startGame();
     });
@@ -253,8 +253,8 @@ function startLevelDifficulty(cards){
         killLevel2Cards();
         killLevel3Cards();
     } else if(myParam == "pilot"){
-        lvl1 = Array.from(document.getElementsByClassName("level1"));
-        lvl2 = Array.from(document.getElementsByClassName("level2"))
+       let lvl1 = Array.from(document.getElementsByClassName("level1"));
+       let lvl2 = Array.from(document.getElementsByClassName("level2"));
         cards = lvl1.concat(lvl2);
         killLevel3Cards();
     } else cards = Array.from(document.getElementsByClassName("card"));
@@ -264,19 +264,14 @@ function startLevelDifficulty(cards){
 
 function killLevel2Cards(){
     let levelTwoCards = Array.from(document.getElementsByClassName("level2")); 
-    for (i of levelTwoCards){
-    i.classList.add("cardKiller")
+    for (var i of levelTwoCards){
+    i.classList.add("cardKiller");
     }
 }
 
 function killLevel3Cards(){
     let levelThreeCards = Array.from(document.getElementsByClassName("level3")); 
-    for (i of levelThreeCards){
-    i.classList.add("cardKiller")
+    for (var i of levelThreeCards){
+    i.classList.add("cardKiller");
     }
 }
-
-
-
-
- 

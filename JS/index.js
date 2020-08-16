@@ -11,6 +11,7 @@ $(document).ready(function(){
      $("#hiScoreButton").animate({bottom: '0px'}, 1200);
 });
 
+/* Hi-Score function (used in on-click event check line 99)*/
 
 
   function showHiScores(){
@@ -49,7 +50,6 @@ const db = firebase.firestore();
 
 // getting data 
 const scoreList = document.querySelector("#hiScoresBody");
-const loadButton = document.querySelector("#hiScoreButton");
 
 function renderScore(doc){
     let tr = document.createElement("tr");
@@ -83,6 +83,7 @@ function renderScore(doc){
 const form = document.querySelector("#inputHiScore");
 
 //saving data 
+
 form.addEventListener("submit", (eventObj) => {
     // prevents page refresh
     eventObj.preventDefault();
@@ -91,7 +92,7 @@ form.addEventListener("submit", (eventObj) => {
         Time: `${parseInt(document.getElementById("timer-countDown").innerHTML)}s`,
         Flips: parseInt(document.getElementById("flips-made").innerHTML)
     });
-     form.reset()
+     form.reset();
 });
 
 
