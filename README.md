@@ -131,6 +131,10 @@ As Always the font choice needed to be specific. I wanted the font to feel both 
 
 ## Existing features
 
+### Site Wide.
+
+* The entire site makes use of the Google Firebase API, which enables me to maintain a server containing hi-scores ready for display. Google's API has great documentation and is implemented by use of the API key found in index.JS.
+
 ### Index.HTML
 * Here you can find the home screen interface complete with game-title (animated), varying levels of difficulty and trophy/hi-scores button, which triggers an overlay and displays the score inputed by the user at the end of each successful level.
     * The animations for the buttons were done with a mixture of custom jquery and hover CSS
@@ -144,9 +148,82 @@ As Always the font choice needed to be specific. I wanted the font to feel both 
        * perspective was used in order to make the card flipping animation. 
        * custom animations were created for the back of the cards to indicate which card is being selected by the user.
        * The script.js features an function with an array of facts sourced from various space websites that can be found credited below.
-    * The shuffling Algorithm - I used the fisher/Yates shuffling algorithm which.
+      * The shuffling Algorithm - I used the fisher/Yates shuffling algorithm which.
      1) this algorithm takes an array and works through it backwards from [-1] to [0]
      2) for each iteration, it creates a random INT which is >= 0 and <= to i
      3) it then exchanges the random number created with the position of the one being iterated, And thats the shuffle!
- please find this credited below or visit
-<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">This Wikipedia link</a> to see a fully provided explanation as well as pseudo-code.
+
+please find this credited below or visit
+<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">This Wikipedia link</a> to see a fully provided explanation as well as pseudo-code. 
+
+* The Victory Overlay is particularly special as it contains the form and calculated end score that it will send to the firebase server. The results to then be displayed on index html 
+
+* The startGameLevel() function that I made is one that I am particularly proud of as it uses custom CSS level classes and the games Object oriented code to determine which cards to allow and which to leave out depenting on the difficulty shown by the query parameters.
+
+* The game Features an Object oriented approach which centers around the custom GameLevel class, which acts as a blueprint for the outline of the game and has allowed me to use the properties of encapsulation, Abstraction, inheritance and polymorphism to group sets of functions and execute the games core code very cleanly.
+
+* Sounds - the game also features sounds and backings that can all be executed through a custom class called AudioControls.
+
+### To be implemented
+* further manipulation and table creation to show scores in relation to their level of difficulty.
+* Perhaps further levels of difficulty with different time goals 
+* Deeper testing using Jasmine
+* Possible Redesign to turn the project into and SPA or single page application.
+
+# Technologies Used
+
+## HTML5
+* Comprising of 52.6% of my entire code was Used to implementd the structure and elements essential to my site.
+## CSS3
+* Was used to style my entire project.
+* CSS grid was used to create the table structure of my cards and allowed for the randomIndex property to be added to the shuffling function. Originally if you look far back enough you can see I built the game in pure bootstrap and then had to make the switch due to the limitations in bootstrap.
+## JavaScript ES6
+* Was used to create the functionality of the game, dynamic level functions as well as connect to the firebase API.
+## Jquery
+* Used purely to test out some animations on the first page and made the code a little cleaner.
+## Bootstrap
+* Used to style the navigational index.html page of the website.
+## Hover CSS
+* Used for the Button animations.
+## Git
+* Used for implementation and version control.
+## GitHub
+* Used for the storing of the repositiory.
+## GitPod
+* The IDE used for the development of the entire project.
+## Adobe XD
+* Used for the mockups and wireframes.
+## Freepik
+* Used to source the .PNG card pictures used in the design of this project.
+
+# Deployment
+
+## Deployment To Github Pages
+
+In my account GitHub website, I selected Repositories
+
+I selected SpaceCapades from the GitHub Dashboard.
+
+I navigated to Settings and to the GitHub Pages section.
+
+From the Source section, I clicked on the drop-down menu and selected Master Branch.
+
+Once Master Branch is selected, the page has been automatically refreshed, with a detailed ribbon display GitHub Source Saved Pages indicating the successful implementation.
+
+The live link can be found here -<<DEPLOYED URL IN GH PAGE>>
+
+## PLEASE NOTE
+
+Allow a few minutes to pass before opening your newly deployed link! Clicking this link too quickly may result in a failure to build the site, causing an Error 404 page instead.
+
+Local Deployment
+
+To run locally, you can do one of the following two options
+
+Clone the repository using the git clone <<name of your .git file>> command
+
+Download the zip file, unzip and run it in your favourite local IDE (such as VS Code)
+
+# Credit
+
+
