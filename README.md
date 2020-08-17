@@ -5,7 +5,7 @@
 
 <span style="color: yellow; background-color: Black; font-size: 110%; font-weight: 600;">SpaceCapades</span> is a memory card game that teaches young children <span style = "color: lightpink; font-weight: 600; "> 5-10 </span> about the wonders of the solar sytem, the game is set up into 3 difficulties, <span style="color:green;">Cadet</span>,<span style="color:lightblue"> Pilot</span> & <span style="color: darkred;">Commander</span>. Whereby the player must use their memory to match sets of space related cards before the timer runs out. upon matching a set of cards information or facts about the matched set will display on screen, the information will change as the game progresses instilling a sense of learning and progression for the player. Upon Victory the player will be allowed to move on to the next level. 
 
-# Ux
+# UX
 
 ## An Overview of : The Why?
 
@@ -49,11 +49,53 @@ Are the colours vibrant enough for a younger child? Does it stimulate their imag
 <span style="color:lightblue;">The Child</span> - I am curious and inquisitive. I'm young and I want to try new things. I'm already developing a strong sense of what I like and dislike. I like playing games on my iPad and my favourites are ones about space or dinosaurs. School is fun but paying attention isn't. My favourite lessons are when we learn about space and the stars and planets. I think I like science and want to be a scientist when I grow up. 
 
 
+## Poject Scope:
 
-# To Do
+The Project was built to a schedule in order to be submitted by my soft deadline, of 18th of August 2020. It was therefore of the utmost importance that certain features were scoped out in order to do prioritise importance and functionality over embellishment and possible feature creep. I am happy to report however that at the time of writing this I feel as though I've accomplished a project which is well rounded and runs smoothly as expected.
+
+Drawing from my experience studying product management, The features were divided using agile principals in the typical Now,Then, Later fashion as one would see when using the likes of Jira and other agile based frameworks.
+
+## Now
+* Research to be made viewing similar projects (as this was my first time writing anything in JS outside of the codeinstitute examples)
+
+* A core game to be designed.
+    * Visual Game layout
+    * JavaScript style (Object,Oriented)
+    * implementing Shuffling function. 
+    * start game state
+    * failsafes to ensure cards cant be manipulated so as to break the rules or immersion of the user.
+
+* A core UI to be made.
+    * Cards
+    * Basic functional animations
+    * start, win, loose overlays to be implemented.
+
+* A Start screen precluding and announcing the game.
+    * Game title
+    * functional buttons to act as links to the game page.
 
 
-* connect with google firebase to create a database of high scores 
-* style FrontIMGs on cards so as to be colored in 
-* customise dance animation 
+
+## Then
+* function getRandomFact() - which pushes facts when called.
+
+* added levels of functionality.
+    * cadet level added
+    * pilot level added
+
+* Final styles and animations.
+
+
+## Later
+* Hi-Score system to be implemented
+    * learning google firebase
+    * creating a method to send scores and add them as a visual table of information for the user.
+
+* To be implemented
+    * further manipulation and table creation to show scores in relation to their level of difficulty.
+    * Perhaps further levels of difficulty with different time goals 
+    * Deeper testing using Jasmine
+
+
+
 
