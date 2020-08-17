@@ -95,6 +95,18 @@ Drawing from my experience studying product management, The features were divide
     * further manipulation and table creation to show scores in relation to their level of difficulty.
     * Perhaps further levels of difficulty with different time goals 
     * Deeper testing using Jasmine
+    * Possible Redesign to turn the project into and SPA or single page application.
+
+## Design Structure
+
+The game as well as index page was always to be designed with the idea of a clean cut simple user interface that focuses on the task at hand. This was done inorder not to break user immersion by adding in unnecessary distraction to gameplay. In short I wanted a layout that would incorporate the best from both its design and function. All the game elements are centered. Although bootstrap is used to design the first page. The second page uses mainly CSS grid to style the cards, this change was made due to the ability for css grid to assign random indexes to elements making shuffling the order of my card elements easier. 
+
+## Skeleton
+
+I used Adobe XD to create the wire-frames for the game's start page and I based the stucture of the game from a video by youtube user <a href="https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw">WebDevSimplified</a> who can be found credited as my main inspiration for the stylings of my project.
+
+
+
 
 
 
