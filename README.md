@@ -103,11 +103,50 @@ The game as well as index page was always to be designed with the idea of a clea
 
 ## Skeleton
 
-I used Adobe XD to create the wire-frames for the game's start page and I based the stucture of the game from a video by youtube user <a href="https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw">WebDevSimplified</a> who can be found credited as my main inspiration for the stylings of my project.
+I used Adobe XD to create the wire-frames for the game's start page and I based the stucture of the game from a video by youtube user <a href="https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw">WebDevSimplified</a> who can be found credited below in detail as my main inspiration for the stylings of this project.
+
+Please find an example of some of my artboards below.
+
+![Image of wireframe](assets/images/WireframeblkWht.jpg)
+![Image of wireframe](assets/images/WireframeColour.jpg)
 
 
+## Colour scheme
+The Colour scheme was kept simple and representative of a nightsky/space environment
+
+* Deep blues mainly : #4b53c6 and #090a19 used for the background and back/face of the cards, the latter used to create a radial gradient on the back face of the card. 
+
+* Pure white was used for all the typography as it stood out and was easily readable in contrast to the darker background.
+
+* Universally recognisable colour schemes were used for the difficulty buttons,  green for <span style="color:green;">Cadet</span>, indigo/blue for <span style="color:indigo"> Pilot</span> & red for the hardest difficulty <span style="color: red;">Commander</span>.
+
+* By contrast the color schemes for the pictures on the front faces of the cards were very diverse and attempted to stay very true to the real life counterparts of the images.
 
 
+## Typography
 
+As Always the font choice needed to be specific. I wanted the font to feel both gameified and futuristic, I was really excited when I stumbled upon the BryantPro2 font family. It instantly felt very unique and fit in very well overall in this project, the font is available for download in the assets folder of this project. It is also deployed locally as google fonts don't seem to have it freely available.
 
+# Features
 
+## Existing features
+
+### Index.HTML
+* Here you can find the home screen interface complete with game-title (animated), varying levels of difficulty and trophy/hi-scores button, which triggers an overlay and displays the score inputed by the user at the end of each successful level.
+    * The animations for the buttons were done with a mixture of custom jquery and hover CSS
+    * The hi-scores are held server-side using Google's firebase API.
+    * Query parameters were used in the Href of each level to help tell the game what difficulty to run. 
+    * bootstrap was used inorder to ensure mobile compatibility as well as a quick easy single column design.
+    * Difficulty buttons are also labelled.
+
+### Game.HTML
+   * Here you can see the main game page, featuring timer-countdown, flip counter and game cards in grid. All cards are animated purely in css using both a mixture of :hover psudo-classes and a few simple event listeners in the script.js folder which add the .visible class. This page also features the games status overlays, such as start game, game over and ofcourse the seperately featured victory-overlay. Upon match a spaceFact will appear dynamically centered at the top of the page.
+       * perspective was used in order to make the card flipping animation. 
+       * custom animations were created for the back of the cards to indicate which card is being selected by the user.
+       * The script.js features an function with an array of facts sourced from various space websites that can be found credited below.
+    * The shuffling Algorithm - I used the fisher/Yates shuffling algorithm which.
+     1) this algorithm takes an array and works through it backwards from [-1] to [0]
+     2) for each iteration, it creates a random INT which is >= 0 and <= to i
+     3) it then exchanges the random number created with the position of the one being iterated, And thats the shuffle!
+ please find this credited below or visit
+<a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">This Wikipedia link</a> to see a fully provided explanation as well as pseudo-code.
