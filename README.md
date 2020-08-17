@@ -1,4 +1,7 @@
-# <span style = "color: yellow; background-color: Black"> Space Capades</span> 
+# <span style = "color: yellow; background-color: Black"> SpaceCapades</span> 
+
+
+![Image of Mockup](assets/images/SpaceCapadesMockup.jpg)
 
 <span style="color: yellow; background-color: Black; font-size: 110%; font-weight: 600;">SpaceCapades</span> is a memory card game that teaches young children <span style = "color: lightpink; font-weight: 600; "> 5-10 </span> about the wonders of the solar sytem, the game is set up into 3 difficulties, <span style="color:green;">Cadet</span>,<span style="color:lightblue"> Pilot</span> & <span style="color: darkred;">Commander</span>. Whereby the player must use their memory to match sets of space related cards before the timer runs out. upon matching a set of cards information or facts about the matched set will display on screen, the information will change as the game progresses instilling a sense of learning and progression for the player. Upon Victory the player will be allowed to move on to the next level. 
 
