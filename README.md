@@ -195,7 +195,8 @@ please find this credited below or visit
 * Used for the mockups and wireframes.
 ## Freepik
 * Used to source the .PNG card pictures used in the design of this project.
-
+# Testing
+to be written.
 # Deployment
 
 ## Deployment To Github Pages
@@ -225,5 +226,23 @@ Clone the repository using the git clone <<name of your .git file>> command
 Download the zip file, unzip and run it in your favourite local IDE (such as VS Code)
 
 # Credit
+
+* I will start first and foremost by thanking these two Incredible developers <a href="https://github.com/WebDevSimplified">WebDevSimplified</a> and <a href="https://github.com/portexe">Portexe</a>. Whose youtube video series on <a href="https://www.youtube.com/watch?v=3uuQ3g92oPQ">Card</a> <a href="https://www.youtube.com/watch?v=28VfzEiJgy4">Games</a> (those two links specifically) is where I learned to code the core of my game. Watching their two videos thought me greatly about the concepts of object oreiented programming, css grid and using perscpective in CSS. I was then able to adapt their code and customise the ideas into my own version of a Card matching Game and go further by including multiple levels, fact adding functions and Hi-Score support using Google FireBase. Needless to say before coming across these two wonderful guys the idea of making something as complex as a game in Java script was beyond me. But through their tutalage I am now capable of so much more in the language. This would have not been possible without their tutorial.
+
+* The Statisticians Frank Yates FRS and Sir Ronald Fisher for the use of their beautifully made <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher/Yates shuffle.</a> Which I used to shuffle my cards.
+
+* <a href="https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB">Net Ninja</a> for his youtube series on using Google firebase and fire store. 
+
+* The fine tutors Of Code institute, namely Miklos, Kevin and Stephen, who had plenty of patience with me when I got stuck on various bugs in my project.
+
+* Special thanks to my Tutor Allen Thomas Varghese, who has always encouraged me, guided me and told me that my designs were fancy!
+
+* Youtuber <a href="https://www.youtube.com/watch?v=pTB0EiLXUC8">Mosh Hamedani</a> whose video on the pricipals of Object oriented programing I watched over and over again to make sense of the concepts I was learning.
+
+* <a href= "http://designsbucket.com/free-space-icon-set-50-icons-svg-png/">Freepik</a> for its free set of space Icons that I used and animated over this project.
+
+
+
+
 
 
