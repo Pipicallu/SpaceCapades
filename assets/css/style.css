@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 /* ------------------------General font/body content ----------------------*/
 
 @font-face {
@@ -48,10 +55,7 @@ p {
   height: 100vh; 
   
 
-  background: url(../images/startScreen.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url(../images/startScreen.jpg) no-repeat center center fixed;
   background-size: cover;
     
 }
@@ -74,7 +78,17 @@ p {
     position: relative;
     top: 130px;
     animation: blinking 1.2s infinite;
-    
+    -webkit-animation: blinking 1.2s infinite;
+    -moz-animation: blinking 1.2s infinite;
+    -o-animation: blinking 1.2s infinite;
+}
+
+@-webkit-keyframes blinking{
+    0%  {		color: #fff;	}
+	49% {	color: rgba(255, 255, 255, 0.178);	}
+	50% {	color: rgba(255, 255, 255, 0.178);	}
+	99% {	color: rgb(255, 255, 255);	}
+	100%{	color: #fff;	}
 }
 
 @keyframes blinking{
@@ -131,7 +145,8 @@ a:hover{
     background-color: #78ca78;
     border-bottom: 4px solid #519251;
     border-right: 4px solid #519251;
-    box-shadow: 0.2px 2px 10px 2px #22222499;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #22222499;
+            box-shadow: 0.2px 2px 10px 2px #22222499;
     position: relative;
     bottom: -100px;
 }
@@ -141,7 +156,8 @@ a:hover{
     background-color: #6c29e9;
     border-bottom: 4px solid #521fb2;
     border-right: 4px solid #521fb2;
-    box-shadow: 0.2px 2px 10px 2px #252960;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #252960;
+            box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     bottom: -100px;
 }
@@ -151,7 +167,8 @@ a:hover{
     background-color: #cf6464;
     border-bottom: 4px solid #854040;
     border-right: 4px solid #854040;
-    box-shadow: 0.2px 2px 10px 2px #252960;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #252960;
+            box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     bottom: -100px;
 }
@@ -160,16 +177,17 @@ a:hover{
     background-color: #78ca78;
     border-bottom: 4px solid #519251;
     border-right: 4px solid #519251;
-    box-shadow: 0.2px 2px 10px 2px #22222499;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #22222499;
+            box-shadow: 0.2px 2px 10px 2px #22222499;
     position: relative;
     
 }
 #tryAgainButton{
-    
     background-color: #cf6464;
     border-bottom: 4px solid #854040;
     border-right: 4px solid #854040;
-    box-shadow: 0.2px 2px 10px 2px #252960;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #252960;
+            box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     
     
@@ -179,7 +197,8 @@ a:hover{
     background-color: #d6be49;
     border-bottom: 4px solid #9c8a31;
     border-right: 4px solid #9c8a31;
-    box-shadow: 0.2px 2px 10px 2px #252960;
+    -webkit-box-shadow: 0.2px 2px 10px 2px #252960;
+            box-shadow: 0.2px 2px 10px 2px #252960;
     position: relative;
     z-index: 100;
     bottom: -100px;
@@ -204,7 +223,9 @@ a:hover{
     left: 0;
     right: 0;
     bottom: 0;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     z-index: 99;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
@@ -225,8 +246,12 @@ a:hover{
     left: 0;
     right: 0;
     bottom: 0;
-     justify-content: center;
-    align-items: center;
+     -webkit-box-pack: center;
+         -ms-flex-pack: center;
+             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     z-index: 100;
     color: white;
 }
@@ -238,8 +263,12 @@ a:hover{
     left: 0;
     right: 0;
     bottom: 0;
-     justify-content: center;
-    align-items: center;
+     -webkit-box-pack: center;
+         -ms-flex-pack: center;
+             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     z-index: 100;
     color: white;
 }
@@ -247,17 +276,45 @@ a:hover{
 
 
 .status-overlay.visible{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     animation: pulse 1.8s infinite linear;
-
+    -webkit-animation: pulse 1.8s infinite linear;
 }
 
 .victory-overlay.visible{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     animation: pulse 1.8s infinite linear;
+    -webkit-animation: pulse 1.8s infinite linear;
 
+}
+
+
+@-webkit-keyframes pulse{
+0%{
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 5em;
+}
+50%{
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 6em;
+}
+
+100%{
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 5em;
+}
 }
 
 
@@ -279,6 +336,8 @@ a:hover{
 
 .overlay-text-small{
     font-size: .3em; 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
     display: flex;
 
     
@@ -288,13 +347,21 @@ a:hover{
 .rocketFail{
     width: 100px;
     height: 100px;
-    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
     top: 100px;
     left: 0px;
     right: 0px;
     position: relative;
-    animation: crash 2s ;
-    animation-iteration-count: infinite;
+    animation: crash 2s;
+    -webkit-animation: crash 2s;
+    -moz-animation: crash 2s;
+    -o-animation: crash 2s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
    
 }
 
@@ -304,82 +371,249 @@ a:hover{
     padding: 50px 10px;
 }
 
-@keyframes crash{
+@-webkit-keyframes crash{
    
     0%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 95px;
         right: 2px;
     }
     5%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top:90px;
         left: -2px;
 
     }
     10%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 85px;
         right: 2px;
     }
     15%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top:80px;
         left: -2px;
 
     }
      20%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 75px;
         right: 2px;
     }
     25%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top:70px;
         left: -2px;
 
     }
     30%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 65px;
         right: 2px;
     }
     35%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top: 60px;
         left: -2px;
 
     }
     40%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 55px;
         right: 2px;
     }
     45%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top: 50px;
         left: -2px;
 
     }
     50%{
         transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
         top: 45px;
         right: 2px;
     }
     55%{
         transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
         top: 40px;
         left: -2px;
 
     }
     60%{
         transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
         top: 40px;
 
     }
     
     100%{
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        top: 100px;
+
+    }
+    
+
+}
+
+@keyframes crash{
+   
+    0%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 95px;
+        right: 2px;
+    }
+    5%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top:90px;
+        left: -2px;
+
+    }
+    10%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 85px;
+        right: 2px;
+    }
+    15%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top:80px;
+        left: -2px;
+
+    }
+     20%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 75px;
+        right: 2px;
+    }
+    25%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top:70px;
+        left: -2px;
+
+    }
+    30%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 65px;
+        right: 2px;
+    }
+    35%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top: 60px;
+        left: -2px;
+
+    }
+    40%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 55px;
+        right: 2px;
+    }
+    45%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top: 50px;
+        left: -2px;
+
+    }
+    50%{
+        transform: rotate(-48deg);
+        -webkit-transform: rotate(-48deg);
+        -moz-transform: rotate(-48deg);
+        -o-transform: rotate(-48deg);
+        top: 45px;
+        right: 2px;
+    }
+    55%{
+        transform: rotate(-42deg);
+        -webkit-transform: rotate(-42deg);
+        -moz-transform: rotate(-42deg);
+        -o-transform: rotate(-42deg);
+        top: 40px;
+        left: -2px;
+
+    }
+    60%{
+        transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        top: 40px;
+
+    }
+    
+    100%{
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
         top: 100px;
 
     }
@@ -390,13 +624,30 @@ a:hover{
 .rocketWin1{
     width: 100px;
     height: 100px;
-    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
     top: 100px;
     position: relative;
     animation: blast 2.2s;
-    animation-iteration-count: infinite;
-    animation-delay: 700ms;
+    -webkit-animation: blast 2.2s;
+    -moz-animation: blast 2.2s;
+    -o-animation: blast 2.2s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-delay: 700ms;
+            animation-delay: 700ms;
     z-index: -1;
+}
+@-webkit-keyframes blast {
+    from {
+        top: 100px;
+    }
+    to {
+        top: -750px;
+    }
 }
 @keyframes blast {
     from {
@@ -411,24 +662,51 @@ a:hover{
 .rocketWin2{
     width: 100px;
     height: 100px;
-    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
     top: 100px;
     left: 400px;
     position: relative;
     animation: blast 2.2s;
-    animation-iteration-count: infinite;
-    animation-delay: 1000ms;
+    -webkit-animation: blast 2.2s;
+    -moz-animation: blast 2.2s;
+    -o-animation: blast 2.2s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-delay: 1000ms;
+            animation-delay: 1000ms;
 }
 
 .rocketWin3{
     width: 100px;
     height: 100px;
-    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
     right: 400px;
     position: relative;
     animation: blastEdit 2.2s;
-    animation-iteration-count: infinite;
-    animation-delay: 200ms;
+    -webkit-animation: blastEdit 2.2s;
+    -moz-animation: blastEdit 2.2s;
+    -o-animation: blastEdit 2.2s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-delay: 200ms;
+            animation-delay: 200ms;
+}
+
+@-webkit-keyframes blastEdit {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -900px;
+    }
 }
 
 @keyframes blastEdit {
@@ -448,25 +726,32 @@ body{
     min-height: 100vh;
   
 
-  background: url(../images/startScreen.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url(../images/startScreen.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
 .game-info-container {
   grid-column: 1 / -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+   justify-content: space-between;
 }
+
 .game-container{
   margin: 50px auto;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: auto 10px auto 10px auto 10px auto;
   grid-template-columns: repeat(4, auto);
   grid-gap: 10px;
-  justify-content: center;
-  perspective: 500px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-perspective: 500px;
+          perspective: 500px;
 }
 
 
@@ -486,35 +771,74 @@ body{
     width: 125px;
     border-radius: 5px;
     border: 1px solid #252960;
-    box-shadow: 2.2px 2px 11px 2px #101129;
+    -webkit-box-shadow: 2.2px 2px 11px 2px #101129;
+            box-shadow: 2.2px 2px 11px 2px #101129;
     background-color: unset;
 
 
 }
 
 .card.visible .card-back{
-    transform: rotateY(-180deg);
+   transform: rotateY(-180deg);
+   -webkit-transform: rotateY(-180deg);
+   -moz-transform: rotateY(-180deg);
+   -o-transform: rotateY(-180deg);
    
 }
 
 .card.visible .card-front{
-    transform: rotateY(0);
-    
+   transform: rotateY(0);
+   -webkit-transform: rotateY(0);
+   -moz-transform: rotateY(0);
+   -o-transform: rotateY(0);
 }
 
 .card.matched .frontIMG{
     animation: dance 1s linear infinite 500ms; 
+    -webkit-animation: dance 1s linear infinite 500ms; 
+    -moz-animation: dance 1s linear infinite 500ms; 
+    -o-animation: dance 1s linear infinite 500ms; 
+}
+
+@-webkit-keyframes dance {
+    0%, 100% {
+        transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
+    }
 }
 
 @keyframes dance {
     0%, 100% {
         transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -o-transform: rotate(0);
     }
     25% {
         transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
     }
     75% {
         transform: rotate(30deg);
+        -webkit-transform: rotate(30deg);
+        -moz-transform: rotate(30deg);
+        -o-transform: rotate(30deg);
     }
 }
 
@@ -528,17 +852,34 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    backface-visibility: hidden;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 500ms ease-in-out;
+    transition: -webkit-transform 500ms ease-in-out;
     transition: transform 500ms ease-in-out;
+    transition: transform 500ms ease-in-out, -webkit-transform 500ms ease-in-out;
+    -webkit-transition: transform 500ms ease-in-out;
+    -moz-transition: transform 500ms ease-in-out;
+    -o-transition: transform 500ms ease-in-out;
 }
 
 
 
 .card-front{
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    background: -o-radial-gradient(#813402, #000000);
     background: radial-gradient(#813402, #000000);
     border: 2px solid #4a1e01;
     border-radius: 5px;
@@ -547,17 +888,32 @@ body{
 .frontIMG{
     /* width: 100px;
     height: 100px; */
-    transform: scale(1);
+    -ms-transform: scale(1);
+        transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition: -webkit-transform 100ms ease-in-out;
+    transition: -webkit-transform 100ms ease-in-out;
     transition: transform 100ms ease-in-out;
+    transition: transform 100ms ease-in-out, -webkit-transform 100ms ease-in-out;
+    -webkit-transition: transform 100ms ease-in-out;
+    -moz-transition: transform 100ms ease-in-out;
+    -o-transition: transform 100ms ease-in-out;
 }
 
 .card-front:hover .frontIMG{
-    transform: scale(1.2);
+    -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
     
 }
 
 
 .card-back{
+    background: -o-radial-gradient(#4b53c6, #090a19);
     background: radial-gradient(#4b53c6, #090a19);
     border-radius: 5px;
 }
@@ -572,6 +928,9 @@ body{
     background-color: #2c306bfc;
     border-radius: 20px;
     transition: font-size 200ms ease-in-out;
+    -webkit-transition: font-size 200ms ease-in-out;
+    -moz-transition: font-size 200ms ease-in-out;
+    -o-transition: font-size 200ms ease-in-out;
 } 
 
 .card-back:hover .card-back-title{
@@ -585,7 +944,9 @@ body{
     width: 30px;
     height: 30px;
     transition: height 100ms ease-in-out, width 100ms ease-in-out;
-    
+    -webkit-transition: height 100ms ease-in-out, width 100ms ease-in-out;
+    -moz-transition: height 100ms ease-in-out, width 100ms ease-in-out;
+    -o-transition: height 100ms ease-in-out, width 100ms ease-in-out;
 }
 
 .card-face:hover .rocket{
@@ -594,14 +955,22 @@ body{
 }
 
 .rocket-top-left{
-    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
     top:0;
     left:0;
     
 }
 
 .rocket-top-right{
-    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
     top:0;
     right:0;
     
@@ -616,7 +985,11 @@ body{
 .rocket-bottom-right{
     bottom:0;
     right: 0;
-    transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
     
 }
 
@@ -625,7 +998,14 @@ body{
     height: 100px;  
     position: relative;
     left: 54px;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition: -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    -webkit-transition: transform .2s ease-in-out;
+    -moz-transition: transform .2s ease-in-out;
+    -o-transition: transform .2s ease-in-out;
+
 
 
 }
@@ -638,7 +1018,13 @@ body{
 
 .card-back:hover .saturn{
 
-    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+
+        transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+
     
 }
 
@@ -662,11 +1048,17 @@ body{
 
 @media (max-width:600px){
     .game-container{
+        -ms-grid-columns: auto 10px auto;
         grid-template-columns: repeat(2,auto);
     }
     .game-info-container{
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 }
 
@@ -701,4 +1093,3 @@ body{
 .score-readings{
  padding: 0 5px;
 }
-
