@@ -192,7 +192,13 @@ class GameLevel {
 
     getRandomFact() {
         const spaceFacts = 
-            ["At a constant temperature of 462° Celsius The hottest planet in our solar system is Venus",
+            ["The oldest accurately dated star chart appeared in ancient Egyptian astronomy in 1534 BC.",
+            "There are 9,096 stars visible to the naked eye in the entire sky. To see more, you have to use a telescope to reveal stars fainter than your eyes can see",
+            "As of now Saturn has 82 moons. Fifty-three moons are confirmed and named and another 29 moons are awaiting confirmation of discovery and official naming.",
+            "The vast majority of asteroids in the solar system are found in a region of the solar system out beyond Mars. They form the Asteroid Belt",
+            "Venus is nearly as big as the Earth with a diameter of 12,104 km.",
+            "Earth has a powerful magnetic field caused by the nickel-iron core of the planet, coupled with its rapid rotation. This field protects the Earth from the effects of solar wind.",
+            "At a constant temperature of 462° Celsius The hottest planet in our solar system is Venus",
             "The highest mountain discovered is the Olympus Mons on Mars which at its peak is 25km making it 3 times taller than MT.Everest", 
             "The Martian day (referred to as a Sol) is 24 hours 39 minutes and 35 seconds long",
             "At 119 yards (109 meters) long, the International Space Station is the largest manned object ever sent into space.",
