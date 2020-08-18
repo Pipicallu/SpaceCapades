@@ -8,7 +8,7 @@
 
 For My second project I set out knowing I wanted to build something highly interactive. It took me sometime to decide whether I wanted to focus on something heavily API based or dive deeper into JavaScript and build something outside of my comfort zone. A project that I could ultimately learn from.  
 I settled on the idea of a card game, as I had fond memories growing up and playing many with family. As we interacted and played I'd listen to my older relatives discuss news and ideas and I always left the table knowing a little more then when I sat down. Throughout this project I felt very strongly
-about recreating that environment for the user, therefore every decision made was geared towards creating a re-playable experience that would stimulate the user both visually and intellectually. Hence the addition of multiple levels, Incentives in the form of Facts being displayed on every card match and
+about recreating that experience for the user, therefore every decision made was geared towards creating a re-playable experience that would stimulate the user both visually and intellectually. Hence the addition of multiple levels, Incentives in the form of Facts being displayed on every card match and
 garnering a strong sense of community with the creation of a competitive Hi-Score system using Google FireBase/Firestore (I still got to add an API in the end, Hooray!).
 
 ## User Goals
@@ -49,7 +49,7 @@ Below are the main questions I asked myself throughout the development process:
 
 The Project was built to a schedule in order to be submitted by my soft deadline, of 18th of August 2020. It was therefore of the utmost importance that certain features were scoped out in order to do prioritise importance and functionality over embellishment and possible feature creep. I am happy to report however that at the time of writing this I feel as though I've accomplished a project which is well rounded and runs smoothly as expected.
 
-Drawing from my experience studying product management, The features were divided using agile principals in the typical Now,Then, Later fashion as one would see when using the likes of Jira and other agile based frameworks.
+Drawing from my experience studying product management, The features were divided using agile principals in the typical Now, Then, Later fashion as one would see when using the likes of Jira and other agile based frameworks.
 
 ## Now
 
@@ -150,8 +150,8 @@ As Always the font choice needed to be specific. I wanted the font to feel both 
   - custom animations were created for the back of the cards to indicate which card is being selected by the user.
   - The script.js features an function with an array of facts sourced from various space websites that can be found credited below.
   - The shuffling Algorithm - I used the fisher/Yates shuffling algorithm which.
-  1.  this algorithm takes an array and works through it backwards from [-1] to [0]
-  2.  for each iteration, it creates a random INT which is >= 0 and <= to i
+  1. takes an array and works through it backwards from [-1] to [0]
+  2.  for each iteration, it creates a random INT which is >= 0 and <= to i.
   3.  it then exchanges the random number created with the position of the one being iterated, And thats the shuffle!
 
 please find this credited below or visit
@@ -163,7 +163,7 @@ please find this credited below or visit
 
 - The game Features an Object oriented approach which centers around the custom GameLevel class, which acts as a blueprint for the outline of the game and has allowed me to use the properties of encapsulation, Abstraction, inheritance and polymorphism to group sets of functions and execute the games core code very cleanly.
 
-- Sounds - the game also features sounds and backings that can all be executed through a custom class called AudioControls.
+- Sounds - the game also features sounds and backings that can all be executed through a custom class called AudioControls. These are responsive and are implemented accordingly to the actions of the user.
 
 ### To be implemented
 
@@ -176,7 +176,7 @@ please find this credited below or visit
 
 ## HTML5
 
-- Comprising of 52.6% of my entire code was Used to implementd the structure and elements essential to my site.
+- Comprising of 52.6% of my entire code was Used to implement the structure and elements essential to my site.
 
 ## CSS3
 
@@ -253,19 +253,21 @@ Download the zip file, unzip and run it in your favourite local IDE (such as VS 
 
 # Credit
 
-- I will start first and foremost by thanking these two Incredible developers <a href="https://github.com/WebDevSimplified">WebDevSimplified</a> and <a href="https://github.com/portexe">Portexe</a>. Whose youtube video series on <a href="https://www.youtube.com/watch?v=3uuQ3g92oPQ">Card</a> <a href="https://www.youtube.com/watch?v=28VfzEiJgy4">Games</a> (those two links specifically) is where I learned to code the core of my game. Watching their two videos thought me greatly about the concepts of object oreiented programming, css grid and using perscpective in CSS. I was then able to adapt their code and customise the ideas into my own version of a Card matching Game and go further by including multiple levels, fact adding functions and Hi-Score support using Google FireBase. Needless to say before coming across these two wonderful guys the idea of making something as complex as a game in Java script was beyond me. But through their tutalage I am now capable of so much more in the language. This would have not been possible without their tutorial.
+* I will start first and foremost by thanking these two Incredible developers <a href="https://github.com/WebDevSimplified">WebDevSimplified</a> and <a href="https://github.com/portexe">Portexe</a>. Whose youtube video series on <a href="https://www.youtube.com/watch?v=3uuQ3g92oPQ">Card</a> <a href="https://www.youtube.com/watch?v=28VfzEiJgy4">Games</a> (those two links specifically) is where I learned to code the core of my game. Watching their two videos thought me greatly about the concepts of object oreiented programming, css grid and using perscpective in CSS. I was then able to adapt their code and customise the ideas into my own version of a Card matching Game and go further by including multiple levels, fact adding functions and Hi-Score support using Google FireBase. Needless to say before coming across these two wonderful guys the idea of making something as complex as a game in Java script was beyond me. But through their tutalage I am now capable of so much more in the language. This would have not been possible without their tutorial.
 
-- The Statisticians Frank Yates FRS and Sir Ronald Fisher for the use of their beautifully made <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher/Yates shuffle.</a> Which I used to shuffle my cards.
+* The Statisticians Frank Yates FRS and Sir Ronald Fisher for the use of their beautifully made <a href="https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle">Fisher/Yates shuffle.</a> Which I used to shuffle my cards.
 
-- <a href="https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB">Net Ninja</a> for his youtube series on using Google firebase and fire store.
+* <a href="https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB">Net Ninja</a> for his youtube series on using Google firebase and fire store.
 
-- The fine tutors Of Code institute, namely Miklos, Kevin and Stephen, who had plenty of patience with me when I got stuck on various bugs in my project.
+* <a href="https://space-facts.com/">This website </a>where I sourced all of my spaceFacts!
 
-- Special thanks to my Tutor Allen Thomas Varghese, who has always encouraged me, guided me and told me that my designs were fancy!
+* The fine tutors Of Code institute, namely Miklos, Haley, Kevin and Stephen, who had plenty of patience with me when I got stuck on various bugs in my project.
 
-- Youtuber <a href="https://www.youtube.com/watch?v=pTB0EiLXUC8">Mosh Hamedani</a> whose video on the pricipals of Object oriented programing I watched over and over again to make sense of the concepts I was learning.
+* Special thanks to my mentor Allen Thomas Varghese, who has always encouraged me, guided me and told me that my designs were fancy!
 
-- <a href= "http://designsbucket.com/free-space-icon-set-50-icons-svg-png/">Freepik</a> for its free set of space Icons that I used and animated over this project.
+* Youtuber <a href="https://www.youtube.com/watch?v=pTB0EiLXUC8">Mosh Hamedani</a> whose video on the pricipals of Object oriented programing I watched over and over again to make sense of the concepts I was learning.
+
+* <a href= "http://designsbucket.com/free-space-icon-set-50-icons-svg-png/">Freepik</a> for its free set of space Icons that I used and animated over this project.
 
 * My fellow codeinstitute colleague/student Sonia Hussein whose <a href="https://github.com/CodeSonia/CodeSonia_Personal_Portfolio">Readme file</a> structure was used as a basepoint to structure my own.
 
