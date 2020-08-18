@@ -33,7 +33,7 @@ Below are the main questions I asked myself throughout the development process:
 
 - <span style="color:lightblue;">Is this obvious to the user?</span> - specifically when dealing with the overal interactivity of the game and presentation of information,
   I.E. how easy is it to get from A to B? are the visual and navigational choices delightful? Is there weight to the animation? Does it relate/re-create a real life model or experience?
-  More simply - do the cards flipping look like real cards?.
+  More simply - do the cards that are flipping look like real cards?.
 - <span style="color:lightblue;">Is it pretty?</span> - Does the overall UI look inviting? is there an obvious theme or color scheme? Is it attractive to my users, do they engage with the pictures and images used?
   Are the colours vibrant enough for a younger child? Does it stimulate their imagination and would they come back for more?
 - <span style="color:lightblue;">Is it interactive?</span> - Does the site offer both visual and audio queues to the user? Are the responses timely? Do they add to the understanding of the user? Do they add to the interactivity of the user and add weight to the users choices?
