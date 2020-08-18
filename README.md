@@ -221,7 +221,108 @@ please find this credited below or visit
 
 # Testing
 
-to be written.
+## HTML
+ All the HTML for the site was tested using https://validator.w3.org/ and returned no errors.
+   * only one warning - The type attribute is unnecessary for JavaScript resources.
+
+## CSS
+ All the CSS for the site was tested using https://jigsaw.w3.org/css-validator/validator and returned no errors. 
+  * However warnings are flagged about certain vendor extensions that the Validator classes as unknown. This however is unimportant to me as tey helped me over-come a massive bug that was causing the css animations to crash on mobile devices. 
+
+  * The vendor extensions such as 
+    -webkit-
+    -moz-
+    -o-
+    were all added using https://autoprefixer.github.io/ .
+
+## JS
+ All the JavaScript for the site was tested using https://jshint.com/. Presently there are no errors save a few warnings. Which are of no concern as most modern browsers support ECMA 6.
+ 
+ * index.js
+
+   * 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+   * arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+   * 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+   * 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+
+   * Two undefined variables '$' - used for jquery and 'firebase' used for FireBase API
+
+   * One unused variable showHiScores() - which is not called in the code as it is tied to an onclick event in index.html.
+  
+   * Metrics
+    
+     There are 8 functions in this file.
+
+     Function with the largest signature take 1 arguments, while the median is 0.5.
+
+     Largest function has 16 statements in it, while the median is 3.5.
+
+     The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+
+* script.js
+
+   * 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+   * arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+   * 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+   * 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+   * 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+
+   * One undefined variable URLSearchParams used to help me identify query parameters which set the level difficulty.
+
+   * Metrics
+     
+     There are 38 functions in this file.
+
+     Function with the largest signature take 2 arguments, while the median is 0.
+
+     Largest function has 11 statements in it, while the median is 2.5.
+
+     The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+
+  I used <a href="http://ami.responsivedesign.is/">Am I Responsive</a> and <a href="https://www.responsinator.com/">Responsinator</a> to ensure that my app worked on multiple devices. The latter was expecially helpful when wanting to check out horizontal orientations on mobile devices.  
+
+  As well as chrome developer tools, which has the provision to test on:
+  * Samsung Galaxy - Responsive
+  * Pixel 2 - Responsive
+  * Pixel 2 XL - Responsive
+  * iPhone 5s/Se/6/7/8/X - Responsive
+  * iPad 9.7" - Responsive
+  * iPad Pro - Responsive
+  * Surface Duo - Responsive
+  * Galaxy Fold - Responsive
+
+### Links/Buttons
+All links work and are accounted for
+
+### Images
+All images render correctly, all image links work.
+
+### Sounds
+All sounds functions work on queue as expected. There was a change in the file extensions made from .wav to .mp3 so that all the sounds could be heard on mobile devices.
+
+### Overflow 
+Overflow-X begins at < 233px
+
+## Chrome Developer Tools.
+
+This is where the majority of my debugging took place throughout this project I have run into my fair share of hurdles.
+
+<a href="https://www.youtube.com/watch?v=AX7uybwukkk">This Video</a> was reccomended to me by one of the tutors at code institute. Its use of the debugger tool together with console logging the bugged variables helped me out of the majority of my bugs with only one major one requiring tutor support. Below are a list of the bugs I encountered and the steps I took to over come them 
+
+* Eventlistener of null - This was perhaps my most consistent issue whilst building this project and it happened to me on two instances.
+
+ The first was when constructing my startLevelDifficulty function which could not read the event listener I was using at the time as the order in my JS scripts was listed incorrectly. I however didnt know this at the time so I used query parameters instead to overcome this.
+
+ The Second was when using FireBase, certain Eventlisteners were listening for elements found only on othe pages, now that I had fixed my issue with the ordering of my script tags I used conditional statements to check if the value of the function was != null before proceeding.
+
+* Vendor specific extensions bug. Quite literally One day before deploying my project I was in the process of testing my website on my iPhone when I found that the css animations for the cards were bugging out, this was found to be consistent on both safari and chrome on mobile. No error was showing up on the console, even when I ran it through the iPhone simulator on my mac. I was unsure what to do so I consulted my tutor who pointed me in the right direction, of looking into vendor specific extensions. After trying to isolate the correct property using https://caniuse.com/#home and adding several extensions myself I was still unsuccessful, it was only when I passed the css through https://autoprefixer.github.io/ did I discover the issue to be resolved.
+
+* the this.cardsArray value was changed from cards to startLevelDifficulty() in order make the value of this.cardsArray equal to this.matchedCards() and for difficulty to be determined.
+
+* .filer method was used in the getRandomFact() was used inorder to fix a bug that caused the same fact to be repeated twice in a row.
+
+* Bootstrap bug - You may notice that bootstrap was traded in for CSS Grid on the game page as bootstrap is not able to randomise the order of elements as easily.
+
 
 # Deployment
 
