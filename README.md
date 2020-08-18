@@ -307,7 +307,7 @@ Overflow-X begins at < 233px
 
 This is where the majority of my debugging took place throughout this project I have run into my fair share of hurdles.
 
-<a href="https://www.youtube.com/watch?v=AX7uybwukkk">This Video</a> was reccomended to me by one of the tutors at code institute. Its use of the debugger tool together with console logging the bugged variables helped me out of the majority of my bugs with only one major one requiring tutor support. Below are a list of the bugs I encountered and the steps I took to over come them 
+<a href="https://www.youtube.com/watch?v=AX7uybwukkk">This Video</a> was recommended to me by one of the tutors at code institute. Its use of the debugger tool together with console logging the bugged variables helped me out of the majority of my bugs with only one major one requiring tutor support. Below are a list of the bugs I encountered and the steps I took to over come them 
 
 * Eventlistener of null - This was perhaps my most consistent issue whilst building this project and it happened to me on two instances.
 
