@@ -2,10 +2,10 @@
 class AudioControls { // Controls for all game sounds
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
-        this.flipMusic = new Audio("assets/soundFX/flipCardSound.wav");
-        this.cardMatchMusic = new Audio("assets/soundFX/cardMatchSound.wav");
-        this.victoryMusic = new Audio("assets/soundFX/victorySound.wav");
-        this.gameOverMusic = new Audio("assets/soundFX/gameOverSound.wav");
+        this.flipMusic = new Audio("assets/soundFX/flipCardSound.mp3");
+        this.cardMatchMusic = new Audio("assets/soundFX/cardMatchSound.mp3");
+        this.victoryMusic = new Audio("assets/soundFX/victorySound.mp3");
+        this.gameOverMusic = new Audio("assets/soundFX/gameOverSound.mp3");
         this.mainMusic.loop = true;
         this.mainMusic.volume = 0.8;
         this.flipMusic.volume = 0.5;
@@ -53,16 +53,23 @@ class GameLevel {
         this.ticker = document.getElementById("flips-made");
         this.audioController = new AudioControls();
     }
-    startGame() { //this function gets called everytime the game is started
-        this.cardToCheck = null; // this property checks to see if the card is already flipped
-        this.totalClicks = 0; //will reset the clicks to 0 at the start of game
-        this.timeRemaining = this.totalTime; //We want the time to reset when the game starts
-        this.matchedCards = []; // all matched cards that we get will go here and we will also use this to check if we have a victory
+    //this function gets called everytime the game is started
+    startGame() { 
+        // this property checks to see if the card is already flipped
+        this.cardToCheck = null; 
+        //will reset the clicks to 0 at the start of game
+        this.totalClicks = 0; 
+        //We want the time to reset when the game starts
+        this.timeRemaining = this.totalTime; 
+        // all matched cards that we get will go here and we will also use this to check if we have a victory.
+        this.matchedCards = [];
+        // Random Fact and the inner html of facts needs to be reset 
         this.randomFact = null;
         this.facts.innerHTML = "";
+        // this tells us when the card is in the middle of an animation
         this.busy = true;
         
-
+        //This time out allows the cards to shuffle
         setTimeout(() => {
             this.audioController.startMusic();
             this.shuffleCards();
@@ -138,6 +145,8 @@ class GameLevel {
     getCardType(card) {
         return card.getElementsByClassName("frontIMG")[0].src;
     }
+
+    //count down to game over
     startCountDown() {
         return setInterval(() => {
             this.timeRemaining--;
