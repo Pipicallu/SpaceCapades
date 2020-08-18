@@ -75,7 +75,9 @@ function renderScore(doc){
 
     db.collection("Hi-Scores").orderBy("Time", "desc").limit(10).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
+            if(scoreList != null){
             renderScore(doc);
+            }
         });
   });
 
@@ -83,7 +85,7 @@ function renderScore(doc){
 const form = document.querySelector("#inputHiScore");
 
 //saving data 
-
+if(form != null) {
 form.addEventListener("submit", (eventObj) => {
     // prevents page refresh
     eventObj.preventDefault();
@@ -94,7 +96,7 @@ form.addEventListener("submit", (eventObj) => {
     });
      form.reset();
 });
-
+}
 
 
   
