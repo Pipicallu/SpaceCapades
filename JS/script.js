@@ -180,7 +180,7 @@ class GameLevel {
         for (let i = this.cardsArray.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * (i + 1));
             this.cardsArray[randomIndex].style.order = i;
-            // this property randomIndex is the entire reason I used css grid rather than bootstrap on this page.
+            // this variable randomIndex is the entire reason I used css grid rather than bootstrap on this page.
             this.cardsArray[i].style.order = randomIndex; 
         }
     }
