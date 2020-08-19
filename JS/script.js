@@ -1,5 +1,6 @@
-  /*-----------------------------Sounds-----------------------------*/
-class AudioControls { // Controls for all game sounds
+/*-----------------------------Sounds-----------------------------*/
+// Controls for all game sounds
+class AudioControls { 
     constructor() {
         this.mainMusic = new Audio("assets/soundFX/interstellarJourney.mp3");
         this.flipMusic = new Audio("assets/soundFX/flipCardSound.mp3");
@@ -17,6 +18,7 @@ class AudioControls { // Controls for all game sounds
     }
 
     stopMusic() {
+        // pause was used as there is no music.stop feature that I'm aware of 
         this.mainMusic.pause();
         this.mainMusic.currentTime = 0;
 
@@ -55,7 +57,7 @@ class GameLevel {
     }
     //this function gets called everytime the game is started
     startGame() { 
-        // this property checks to see if the card is already flipped
+        //set to null at start game as there are no cards to check.
         this.cardToCheck = null; 
         //will reset the clicks to 0 at the start of game
         this.totalClicks = 0; 
@@ -76,7 +78,7 @@ class GameLevel {
             this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
-
+        //hides the cards at the start of game.
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
@@ -136,12 +138,14 @@ class GameLevel {
 
     cardMisMatch(card1, card2) {
         this.busy = true;
+        // gives the cards a second to reset.
         setTimeout(() => {
             card1.classList.remove("visible");
             card2.classList.remove("visible");
             this.busy = false;
         }, 1000);
     }
+
     getCardType(card) {
         return card.getElementsByClassName("frontIMG")[0].src;
     }
@@ -185,7 +189,10 @@ class GameLevel {
         }
     }
 
-
+    /* this was sourced directly from minute 21:39 of this video https://www.youtube.com/watch?v=3uuQ3g92oPQ 
+    Creates a boolean that ensures that if the card is not busy and is not included in this.matchedCards and
+    the card is not the card to check it will return true.
+    */
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
@@ -256,7 +263,7 @@ function ready() {
     });
 }
 
-
+// listens for the DOM to load then calls ready function.
 document.addEventListener("DOMContentLoaded", ready());
 
 /*-----level difficulty functions-----*/

@@ -740,6 +740,7 @@ body{
    justify-content: space-between;
 }
 
+/* I used webDevSimplified's video https://www.youtube.com/watch?v=9zBsdzdE4sM to learn to use CSS grid. */
 .game-container{
   margin: 50px auto;
   display: -ms-grid;
