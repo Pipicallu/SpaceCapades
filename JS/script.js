@@ -125,8 +125,10 @@ class GameLevel {
         this.audioController.match();
         this.getRandomFact();
     
+        /* 
+        Used to test the length of both arrays when alternate game levels were added
         console.log("cardsArray", this.cardsArray);
-        console.log("matched cards", this.matchedCards);
+        console.log("matched cards", this.matchedCards); */
         
         if (this.matchedCards.length === this.cardsArray.length) {
             console.log("Victory");
