@@ -373,7 +373,7 @@ From the Source section, I clicked on the drop-down menu and selected Master Bra
 
 Once Master Branch is selected, the page has been automatically refreshed, with a detailed ribbon display GitHub Source Saved Pages indicating the successful implementation.
 
-The live link can be found here -<<DEPLOYED URL IN GH PAGE>>
+The live link can be found here https://pipicallu.github.io/SpaceCapades/.
 
 ## PLEASE NOTE
 
