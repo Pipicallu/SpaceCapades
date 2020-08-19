@@ -372,6 +372,8 @@ Download the zip file, unzip and run it in your favourite local IDE (such as VS 
 
 * My fellow codeinstitute colleague/student Sonia Hussein whose <a href="https://github.com/CodeSonia/CodeSonia_Personal_Portfolio">Readme file</a> structure was used as a basepoint to structure my own.
 
+* Credit to Mrm Team for the use of their sound track <a href="https://music.apple.com/us/album/interstellar-journey/1076746053?i=1076746500">Insterstellar Journey</a>. All other sounds were sourced from free sound samples on youtube.
+
 * codeinstitute advisor Claire Lally for helping me with the deployment part of this write up.
 
 ## Personal Reflections
