@@ -323,6 +323,41 @@ This is where the majority of my debugging took place throughout this project I 
 
 * Bootstrap bug - You may notice that bootstrap was traded in for CSS Grid on the game page as bootstrap is not able to randomise the order of elements as easily.
 
+## User Testing
+Below Please find a list of questions I used to check if users were able to navigate the site properly:
+
+#### Index Page
+
+Here I wanted to make sure that my users primarily understood the information architecture presented before them.
+* Decribe what you see before you.
+* What kind of app do you think this is? 
+* Do you think this app has a name?
+* Desrcribe the main features of the page
+* What do you think the buttons do? 
+* could you find the scores list for me ?
+* can you read the first score? 
+
+#### Game Page
+
+Here I wanted to make sure that the users interacted with the game was about. 
+* Describe to me what you see before you 
+* what do you think the challenge is? 
+* How would you interact with the cards? 
+* What else do you see on screen? 
+* Are you having enjoying yourself? 
+* is there anything that stands out to you visually?
+
+* Upon presentation of VictoryOverlay.
+    * Could you tell me what's just happened? - (to see if user recognises they've won the game)
+    * Could you submit your score? 
+    * Could you describe to me your options at this point?
+* Upon GameOver
+    * could you tell me what just happened?
+    * what are your options at this point?
+    * how do you feel? 
+    * how would you take me back to the home screen?
+    * try the game again?
+
 
 # Deployment
 
