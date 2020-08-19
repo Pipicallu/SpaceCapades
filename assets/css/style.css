@@ -117,8 +117,9 @@ p {
 
 .restartButton {
     width: 240px;
+    min-height: 50px;
     height: 50px;
-    margin: 8px;
+    margin: 8px 0 20px 0;
     color: white;
     
 }
@@ -368,7 +369,7 @@ a:hover{
 .winTitle{
     font-size: 4rem;
     margin-top: 3em;
-    padding: 50px 10px;
+    padding: 10px 10px;
 }
 
 @-webkit-keyframes crash{
