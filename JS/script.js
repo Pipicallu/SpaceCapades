@@ -131,7 +131,7 @@ class GameLevel {
         console.log("matched cards", this.matchedCards); */
         
         if (this.matchedCards.length === this.cardsArray.length) {
-            console.log("Victory");
+           // console.log("Victory"); used to test victory condition
             this.victory();
             
         }
@@ -243,7 +243,7 @@ function ready() {
     
     cards = startLevelDifficulty(cards);
 
-    console.log(cards);
+    // console.log(cards); used to test cards array
 
     overlays.forEach((overlay) => {
         overlay.addEventListener("click", () => {
